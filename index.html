@@ -7,15 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #059669; /* Vert Islamique moderne */
+            --primary: #059669;
             --primary-hover: #047857;
-            --bg-color: #f0fdf4; /* Vert très très clair pour le fond */
+            --bg-color: #f0fdf4;
             --card-bg: #ffffff;
             --text-main: #1f2937;
             --text-muted: #6b7280;
             --correct: #10b981;
             --incorrect: #ef4444;
-            --accent: #f59e0b; /* Doré */
+            --accent: #f59e0b;
         }
 
         body {
@@ -32,134 +32,56 @@
             min-height: 100vh;
         }
 
-        #app-container {
-            width: 100%;
-            max-width: 600px;
-            margin-top: 20px;
-        }
+        #app-container { width: 100%; max-width: 600px; margin-top: 20px; }
 
-        /* --- DASHBOARD & STATS --- */
-        .header-app {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+        .header-app { text-align: center; margin-bottom: 30px; }
         .header-app h1 { font-size: 2em; margin: 0; color: var(--primary); }
         .header-app p { color: var(--text-muted); margin-top: 5px; }
 
         .dashboard-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.1);
-            margin-bottom: 30px;
+            background: var(--card-bg); border-radius: 20px; padding: 20px;
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.1); margin-bottom: 30px;
         }
         
-        .dashboard-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .dashboard-title { font-size: 1.2em; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 
         .stat-box {
-            background: #f8fafc;
-            padding: 15px 10px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
+            background: #f8fafc; padding: 15px 10px; border-radius: 15px;
+            text-align: center; border: 1px solid #e2e8f0;
+            display: flex; flex-direction: column; justify-content: center;
         }
 
+        /* CORRECTION ICI : Police ajustée et gestion du texte long */
         .stat-value {
-            font-size: 1.4em;
+            font-size: 1.1em;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
+            line-height: 1.2;
         }
+        
+        /* Gros chiffre pour le % de réussite */
+        #stat-taux { font-size: 1.5em; }
 
-        .stat-label {
-            font-size: 0.75em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        .stat-label { font-size: 0.75em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- ROOMS (THÈMES) --- */
-        .rooms-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+        .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
         .room-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+            background: var(--card-bg); border-radius: 20px; padding: 20px; text-align: center;
+            cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid transparent; transition: all 0.3s ease;
         }
+        .room-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(5, 150, 105, 0.15); }
 
-        .room-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.15);
-        }
+        .room-icon { font-size: 2.5em; margin-bottom: 10px; }
+        .room-title { font-weight: 600; font-size: 1em; margin-bottom: 5px; }
+        .room-info { font-size: 0.8em; color: var(--text-muted); background: #f1f5f9; padding: 4px 10px; border-radius: 10px; display: inline-block; }
 
-        .room-icon {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .room-title {
-            font-weight: 600;
-            font-size: 1em;
-            margin-bottom: 5px;
-        }
-
-        .room-info {
-            font-size: 0.8em;
-            color: var(--text-muted);
-            background: #f1f5f9;
-            padding: 4px 10px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-
-        /* --- VUE DU QUIZ --- */
-        #quiz-view {
-            display: none;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .quiz-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .back-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 1.5em;
-            padding: 0;
-        }
-
+        #quiz-view { display: none; background: var(--card-bg); padding: 30px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.5em; padding: 0; }
         .progress-container { width: 100%; height: 8px; background-color: #e5e7eb; border-radius: 10px; margin-bottom: 20px; }
         #progress-bar { height: 100%; background-color: var(--primary); width: 0%; transition: width 0.4s ease; border-radius: 10px; }
         #question-text { font-size: 1.2em; font-weight: 600; margin-bottom: 25px; line-height: 1.5; }
@@ -171,25 +93,19 @@
         }
         .option-btn:hover:not(:disabled) { border-color: var(--primary); background-color: #ecfdf5; }
         .option-btn:disabled { cursor: not-allowed; }
-        
         .correct { background-color: var(--correct) !important; color: white !important; border-color: var(--correct) !important; }
         .incorrect { background-color: var(--incorrect) !important; color: white !important; border-color: var(--incorrect) !important; }
         
-        #feedback-section {
-            display: none; margin-top: 25px; padding: 20px; background-color: #f8fafc;
-            border-radius: 16px; border-left: 5px solid var(--primary);
-        }
+        #feedback-section { display: none; margin-top: 25px; padding: 20px; background-color: #f8fafc; border-radius: 16px; border-left: 5px solid var(--primary); }
         #feedback-title { display: block; font-size: 1.1em; margin-bottom: 8px; }
         #source-text { font-size: 0.9em; color: var(--text-muted); }
         
         .action-btn {
-            margin-top: 20px; padding: 15px; background-color: var(--primary); color: white;
-            border: none; border-radius: 14px; cursor: pointer; font-size: 1.05em;
-            font-family: 'Poppins', sans-serif; font-weight: 600; width: 100%; transition: all 0.2s;
+            margin-top: 20px; padding: 15px; background-color: var(--primary); color: white; border: none;
+            border-radius: 14px; cursor: pointer; font-size: 1.05em; font-family: 'Poppins', sans-serif; font-weight: 600; width: 100%; transition: all 0.2s;
         }
         .action-btn:hover { background-color: var(--primary-hover); }
 
-        /* Mobile Responsive */
         @media (max-width: 480px) {
             .rooms-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: 1fr; }
@@ -226,8 +142,7 @@
             </div>
 
             <h2 style="font-size: 1.2em; margin-bottom: 15px;">📚 Les Salons d'apprentissage</h2>
-            <div class="rooms-grid" id="rooms-container">
-                </div>
+            <div class="rooms-grid" id="rooms-container"></div>
         </div>
 
         <div id="quiz-view">
@@ -253,7 +168,6 @@
     </div>
 
     <script>
-        // --- 1. BASE DE DONNÉES DES QUESTIONS ---
         const questionsDatabase = {
             "Le Coran": {
                 icon: "📖",
@@ -262,7 +176,7 @@
                     { "question": "Quel ange a transmis la révélation ?", "choix": ["Mika'il", "Jibril", "Israfil", "Malik"], "bonne_reponse": "Jibril", "source": "Coran, 2:97." }
                 ]
             },
-            "La Sira (Prophète ﷺ)": {
+            "La Sira": {
                 icon: "🕋",
                 questions: [
                     { "question": "Dans quelle ville est né le Prophète (ﷺ) ?", "choix": ["Médine", "La Mecque", "Jérusalem", "Taëf"], "bonne_reponse": "La Mecque", "source": "Sira historique." },
@@ -283,13 +197,7 @@
             }
         };
 
-        // --- 2. GESTION DES STATISTIQUES (SAUVEGARDE) ---
-        // On récupère les stats de la mémoire, sinon on crée un profil vide
-        let userStats = JSON.parse(localStorage.getItem('islamQuizStats')) || {
-            totalQuestions: 0,
-            totalCorrect: 0,
-            themes: {}
-        };
+        let userStats = JSON.parse(localStorage.getItem('islamQuizStats')) || { totalQuestions: 0, totalCorrect: 0, themes: {} };
 
         function saveStats() {
             localStorage.setItem('islamQuizStats', JSON.stringify(userStats));
@@ -300,12 +208,11 @@
             if(confirm("Veux-tu vraiment effacer toute ta progression ?")) {
                 userStats = { totalQuestions: 0, totalCorrect: 0, themes: {} };
                 saveStats();
+                initRooms();
             }
         }
 
-        // --- 3. LOGIQUE DU DASHBOARD ---
         function updateDashboardUI() {
-            // Taux global
             const tauxElem = document.getElementById('stat-taux');
             if (userStats.totalQuestions === 0) {
                 tauxElem.innerText = "0%";
@@ -314,7 +221,6 @@
                 tauxElem.innerText = pourcentage + "%";
             }
 
-            // Calcul du point fort et point faible
             let bestTheme = "-";
             let worstTheme = "-";
             let highestRate = -1;
@@ -324,8 +230,9 @@
                 const statsTheme = userStats.themes[theme];
                 if (statsTheme.total > 0) {
                     const rate = (statsTheme.correct / statsTheme.total) * 100;
-                    if (rate > highestRate) { highestRate = rate; bestTheme = theme.split(" ")[0]; } // Prend juste le premier mot pour pas que ce soit trop long
-                    if (rate < lowestRate) { lowestRate = rate; worstTheme = theme.split(" ")[0]; }
+                    // CORRECTION : On garde le nom complet du thème
+                    if (rate > highestRate) { highestRate = rate; bestTheme = theme; } 
+                    if (rate < lowestRate) { lowestRate = rate; worstTheme = theme; }
                 }
             }
 
@@ -339,11 +246,7 @@
             
             for (const theme in questionsDatabase) {
                 const roomData = questionsDatabase[theme];
-                
-                // On prépare les stats de ce thème si elles n'existent pas
-                if(!userStats.themes[theme]) {
-                    userStats.themes[theme] = { total: 0, correct: 0 };
-                }
+                if(!userStats.themes[theme]) { userStats.themes[theme] = { total: 0, correct: 0 }; }
 
                 const card = document.createElement("div");
                 card.classList.add("room-card");
@@ -359,7 +262,16 @@
             updateDashboardUI();
         }
 
-        // --- 4. LOGIQUE DU QUIZ ---
+        // NOUVEAUTÉ : Fonction pour mélanger les questions
+        function shuffleArray(array) {
+            let shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
         let currentTheme = "";
         let currentQuestions = [];
         let currentIndex = 0;
@@ -370,7 +282,11 @@
 
         function startQuiz(theme) {
             currentTheme = theme;
-            currentQuestions = questionsDatabase[theme].questions;
+            
+            // NOUVEAUTÉ : On mélange et on garde maximum 10 questions pour la session
+            const allQuestions = questionsDatabase[theme].questions;
+            currentQuestions = shuffleArray(allQuestions).slice(0, 10);
+            
             currentIndex = 0;
             sessionScore = 0;
 
@@ -423,7 +339,7 @@
                 userStats.themes[currentTheme].correct++;
             } else {
                 btn.classList.add('incorrect');
-                feedbackTitle.innerHTML = `❌ Oups... La réponse était : ${correct}`;
+                feedbackTitle.innerHTML = `❌ Oups... La réponse était : <strong>${correct}</strong>`;
                 feedbackTitle.style.color = "var(--incorrect)";
                 allBtns.forEach(b => { if (b.innerText === correct) b.classList.add('correct'); });
             }
@@ -444,12 +360,11 @@
         }
 
         function retourDashboard() {
-            saveStats(); // Sauvegarde les stats dans le navigateur en partant
+            saveStats();
             viewQuiz.style.display = "none";
             viewDashboard.style.display = "block";
         }
 
-        // Lancement au démarrage
         initRooms();
     </script>
 </body>
