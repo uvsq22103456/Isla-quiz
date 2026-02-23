@@ -3,295 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Islamique</title>
+    <title>IslamQuiz - Apprentissage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #059669; /* Vert Islamique moderne */
+            --primary-hover: #047857;
+            --bg-color: #f0fdf4; /* Vert très très clair pour le fond */
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --correct: #10b981;
+            --incorrect: #ef4444;
+            --accent: #f59e0b; /* Doré */
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d1fae5 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
-            margin: 0;
         }
+
         #app-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-        }
-        h1, h2 { color: #2c3e50; }
-        
-        .btn {
-            display: block;
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background-color: #ecf0f1;
-            border: 2px solid #bdc3c7;
-            border-radius: 8px;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        /* --- DASHBOARD & STATS --- */
+        .header-app {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header-app h1 { font-size: 2em; margin: 0; color: var(--primary); }
+        .header-app p { color: var(--text-muted); margin-top: 5px; }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: #f8fafc;
+            padding: 15px 10px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-value {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- ROOMS (THÈMES) --- */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .room-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
             cursor: pointer;
-            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
             transition: all 0.3s ease;
         }
-        .btn:hover { background-color: #dcdde1; }
-        
-        #theme-menu .btn {
-            background-color: #34495e;
-            color: white;
-            border: none;
-        }
-        #theme-menu .btn:hover { background-color: #2c3e50; }
 
-        #quiz-section { display: none; }
+        .room-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.15);
+        }
+
+        .room-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .room-title {
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .room-info {
+            font-size: 0.8em;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* --- VUE DU QUIZ --- */
+        #quiz-view {
+            display: none;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.5em;
+            padding: 0;
+        }
+
+        .progress-container { width: 100%; height: 8px; background-color: #e5e7eb; border-radius: 10px; margin-bottom: 20px; }
+        #progress-bar { height: 100%; background-color: var(--primary); width: 0%; transition: width 0.4s ease; border-radius: 10px; }
+        #question-text { font-size: 1.2em; font-weight: 600; margin-bottom: 25px; line-height: 1.5; }
         
-        #score-display { font-weight: bold; margin-bottom: 20px; color: #7f8c8d; }
-        #question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: bold; }
+        .option-btn {
+            display: block; width: 100%; padding: 15px; margin: 10px 0; background-color: #f9fafb;
+            border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; font-size: 1em;
+            font-family: 'Poppins', sans-serif; font-weight: 500; text-align: left; transition: all 0.2s;
+        }
+        .option-btn:hover:not(:disabled) { border-color: var(--primary); background-color: #ecfdf5; }
+        .option-btn:disabled { cursor: not-allowed; }
         
-        .btn:disabled { cursor: not-allowed; opacity: 0.9; }
-        .correct { background-color: #2ecc71 !important; color: white; border-color: #27ae60; }
-        .incorrect { background-color: #e74c3c !important; color: white; border-color: #c0392b; }
+        .correct { background-color: var(--correct) !important; color: white !important; border-color: var(--correct) !important; }
+        .incorrect { background-color: var(--incorrect) !important; color: white !important; border-color: var(--incorrect) !important; }
         
         #feedback-section {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f1f2f6;
-            border-left: 5px solid #2980b9;
-            border-radius: 4px;
-            text-align: left;
+            display: none; margin-top: 25px; padding: 20px; background-color: #f8fafc;
+            border-radius: 16px; border-left: 5px solid var(--primary);
         }
-        #source-text { font-style: italic; font-size: 0.95em; margin-top: 10px; color: #2c3e50; }
+        #feedback-title { display: block; font-size: 1.1em; margin-bottom: 8px; }
+        #source-text { font-size: 0.9em; color: var(--text-muted); }
         
-        #next-btn, #home-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #2980b9;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1em;
+        .action-btn {
+            margin-top: 20px; padding: 15px; background-color: var(--primary); color: white;
+            border: none; border-radius: 14px; cursor: pointer; font-size: 1.05em;
+            font-family: 'Poppins', sans-serif; font-weight: 600; width: 100%; transition: all 0.2s;
         }
-        #next-btn:hover, #home-btn:hover { background-color: #3498db; }
+        .action-btn:hover { background-color: var(--primary-hover); }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .rooms-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <div id="app-container">
-        <h1>Quiz sur l'Islam</h1>
         
-        <div id="theme-menu">
-            <h2>Choisissez un thème</h2>
-            <div id="theme-buttons"></div>
+        <div id="dashboard-view">
+            <div class="header-app">
+                <h1>IslamQuiz</h1>
+                <p>Apprends ta religion pas à pas</p>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-title">📊 Mes Statistiques</div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-taux">0%</div>
+                        <div class="stat-label">Réussite</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-fort">-</div>
+                        <div class="stat-label">Point Fort</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-faible">-</div>
+                        <div class="stat-label">À réviser</div>
+                    </div>
+                </div>
+                <button class="action-btn" style="margin-top: 15px; background-color: #ef4444; padding: 10px;" onclick="resetStats()">Réinitialiser mes stats</button>
+            </div>
+
+            <h2 style="font-size: 1.2em; margin-bottom: 15px;">📚 Les Salons d'apprentissage</h2>
+            <div class="rooms-grid" id="rooms-container">
+                </div>
         </div>
 
-        <div id="quiz-section">
-            <h2 id="current-theme-title">Thème</h2>
-            <div id="score-display">Score : 0 / 0</div>
+        <div id="quiz-view">
+            <div class="quiz-header">
+                <button class="back-btn" onclick="retourDashboard()">✖</button>
+                <div style="font-weight: 600; color: var(--primary);" id="quiz-theme-title">Thème</div>
+                <div id="score-display">0/0</div>
+            </div>
+
+            <div class="progress-container"><div id="progress-bar"></div></div>
             
-            <div id="question-text">Chargement de la question...</div>
+            <div id="question-text">Chargement...</div>
             <div id="options-container"></div>
 
             <div id="feedback-section">
                 <strong id="feedback-title"></strong>
                 <div id="source-text"></div>
-                <button id="next-btn" onclick="nextQuestion()">Question suivante</button>
+                <button class="action-btn" id="next-btn" onclick="nextQuestion()">Question suivante</button>
+                <button class="action-btn" id="finish-btn" style="display:none;" onclick="retourDashboard()">Terminer et Sauvegarder</button>
             </div>
-            
-            <button id="home-btn" style="display:none; width:100%;" onclick="retourAccueil()">Retour à l'accueil</button>
         </div>
+
     </div>
 
     <script>
+        // --- 1. BASE DE DONNÉES DES QUESTIONS ---
         const questionsDatabase = {
-            "Le Coran": [
-                {
-                    "question": "Combien de sourates (chapitres) compte le Coran ?",
-                    "choix": ["110", "112", "114", "120"],
-                    "bonne_reponse": "114",
-                    "source": "Consensus des savants (Ijma') sur la compilation du Mus'haf."
-                },
-                {
-                    "question": "Quel ange a été chargé de transmettre la révélation au Prophète Muhammad (ﷺ) ?",
-                    "choix": ["Mika'il (Michel)", "Jibril (Gabriel)", "Israfil", "Malik"],
-                    "bonne_reponse": "Jibril (Gabriel)",
-                    "source": "Coran, Sourate Al-Baqarah (2), verset 97."
-                },
-                {
-                    "question": "Quelle sourate est appelée 'Le tiers du Coran' par le Prophète (ﷺ) ?",
-                    "choix": ["Al-Fatiha", "Al-Ikhlas", "Al-Falaq", "An-Nas"],
-                    "bonne_reponse": "Al-Ikhlas",
-                    "source": "Hadith authentique : Sahih Al-Bukhari, n° 5013."
-                },
-                {
-                    "question": "Quelle est la seule sourate du Coran qui ne commence pas par la formule 'Bismillah ar-Rahman ar-Rahim' ?",
-                    "choix": ["Al-Anfal", "At-Tawbah (Le Repentir)", "Al-Kahf (La Caverne)", "Maryam"],
-                    "bonne_reponse": "At-Tawbah (Le Repentir)",
-                    "source": "Structure officielle du Coran (Mus'haf). Les savants expliquent qu'elle commence par un désaveu envers les polythéistes."
-                },
-                {
-                    "question": "Quel compagnon a été chargé par le calife Abu Bakr de compiler le Coran en un seul volume pour la première fois ?",
-                    "choix": ["Ali ibn Abi Talib", "Uthman ibn Affan", "Zayd ibn Thabit", "Abdullah ibn Mas'ud"],
-                    "bonne_reponse": "Zayd ibn Thabit",
-                    "source": "Hadith authentique : Sahih Al-Bukhari, n° 4986."
-                },
-                {
-                    "question": "Quel est le seul compagnon (Sahabi) dont le nom est explicitement mentionné dans le Coran ?",
-                    "choix": ["Abu Bakr As-Siddiq", "Umar ibn Al-Khattab", "Zayd ibn Haritha", "Bilal ibn Rabah"],
-                    "bonne_reponse": "Zayd ibn Haritha",
-                    "source": "Coran, Sourate Al-Ahzab (33), verset 37."
-                },
-                {
-                    "question": "Dans quelle sourate trouve-t-on DEUX FOIS la formule 'Bismillah ar-Rahman ar-Rahim' ?",
-                    "choix": ["Al-Baqarah", "An-Naml (Les Fourmis)", "Yusuf", "Al-Mulk"],
-                    "bonne_reponse": "An-Naml (Les Fourmis)",
-                    "source": "Coran, Sourate An-Naml (27) : au début de la sourate, et au verset 30 (dans la lettre de Souleyman/Salomon)."
-                },
-                {
-                    "question": "D'après le Coran, pendant combien d'années le prophète Nuh (Noé) a-t-il prêché son peuple avant le déluge ?",
-                    "choix": ["950 ans", "300 ans", "1000 ans", "120 ans"],
-                    "bonne_reponse": "950 ans",
-                    "source": "Coran, Sourate Al-'Ankabut (29), verset 14 ('...mille ans moins cinquante années')."
-                },
-                {
-                    "question": "Quelle est la plus longue sourate du Coran ?",
-                    "choix": ["Al-Imran", "An-Nisa", "Al-Baqarah", "Al-Ma'idah"],
-                    "bonne_reponse": "Al-Baqarah",
-                    "source": "Consensus : Elle contient 286 versets."
-                },
-                {
-                    "question": "Combien de prophètes sont nommément cités dans le Coran ?",
-                    "choix": ["25", "99", "313", "124 000"],
-                    "bonne_reponse": "25",
-                    "source": "Consensus des exégètes basés sur les textes coraniques (Adam, Nuh, Ibrahim, Musa, Isa, Muhammad, etc.)."
-                }
-            ],
-            "La Vie du Prophète (ﷺ)": [
-                {
-                    "question": "Dans quelle ville est né le Prophète Muhammad (ﷺ) ?",
-                    "choix": ["Médine", "La Mecque", "Jérusalem", "Taëf"],
-                    "bonne_reponse": "La Mecque",
-                    "source": "Consensus historique et biographique (Sira)."
-                }
-            ],
-            "Les Piliers de l'Islam": [
-                {
-                    "question": "Combien y a-t-il de piliers en Islam ?",
-                    "choix": ["3", "4", "5", "6"],
-                    "bonne_reponse": "5",
-                    "source": "Hadith authentique (Hadith de Jibril) : Sahih Muslim n°8."
-                }
-            ]
+            "Le Coran": {
+                icon: "📖",
+                questions: [
+                    { "question": "Combien de sourates compte le Coran ?", "choix": ["110", "112", "114", "120"], "bonne_reponse": "114", "source": "Consensus des savants." },
+                    { "question": "Quel ange a transmis la révélation ?", "choix": ["Mika'il", "Jibril", "Israfil", "Malik"], "bonne_reponse": "Jibril", "source": "Coran, 2:97." }
+                ]
+            },
+            "La Sira (Prophète ﷺ)": {
+                icon: "🕋",
+                questions: [
+                    { "question": "Dans quelle ville est né le Prophète (ﷺ) ?", "choix": ["Médine", "La Mecque", "Jérusalem", "Taëf"], "bonne_reponse": "La Mecque", "source": "Sira historique." },
+                    { "question": "Comment s'appelait sa mère ?", "choix": ["Khadija", "Amina", "Halima", "Fatima"], "bonne_reponse": "Amina", "source": "Sira d'Ibn Ishaq." }
+                ]
+            },
+            "Les Piliers": {
+                icon: "⭐",
+                questions: [
+                    { "question": "Combien y a-t-il de piliers en Islam ?", "choix": ["3", "4", "5", "6"], "bonne_reponse": "5", "source": "Hadith de Jibril (Sahih Muslim)." }
+                ]
+            },
+            "Les Prophètes": {
+                icon: "🐪",
+                questions: [
+                    { "question": "Quel prophète a construit l'Arche ?", "choix": ["Musa", "Ibrahim", "Nuh (Noé)", "Isa"], "bonne_reponse": "Nuh (Noé)", "source": "Coran." }
+                ]
+            }
         };
 
-        let currentQuestions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
+        // --- 2. GESTION DES STATISTIQUES (SAUVEGARDE) ---
+        // On récupère les stats de la mémoire, sinon on crée un profil vide
+        let userStats = JSON.parse(localStorage.getItem('islamQuizStats')) || {
+            totalQuestions: 0,
+            totalCorrect: 0,
+            themes: {}
+        };
 
-        const themeMenu = document.getElementById("theme-menu");
-        const themeButtonsContainer = document.getElementById("theme-buttons");
-        const quizSection = document.getElementById("quiz-section");
-        const currentThemeTitle = document.getElementById("current-theme-title");
-        const questionTextElement = document.getElementById("question-text");
-        const optionsContainer = document.getElementById("options-container");
-        const feedbackSection = document.getElementById("feedback-section");
-        const feedbackTitle = document.getElementById("feedback-title");
-        const sourceText = document.getElementById("source-text");
-        const scoreDisplay = document.getElementById("score-display");
-        const nextBtn = document.getElementById("next-btn");
-        const homeBtn = document.getElementById("home-btn");
+        function saveStats() {
+            localStorage.setItem('islamQuizStats', JSON.stringify(userStats));
+            updateDashboardUI();
+        }
 
-        function initThemes() {
-            themeButtonsContainer.innerHTML = "";
-            for (const theme in questionsDatabase) {
-                const btn = document.createElement("button");
-                btn.classList.add("btn");
-                btn.innerText = theme + " (" + questionsDatabase[theme].length + " questions)";
-                btn.onclick = () => lancerQuiz(theme);
-                themeButtonsContainer.appendChild(btn);
+        function resetStats() {
+            if(confirm("Veux-tu vraiment effacer toute ta progression ?")) {
+                userStats = { totalQuestions: 0, totalCorrect: 0, themes: {} };
+                saveStats();
             }
         }
 
-        function lancerQuiz(theme) {
-            currentQuestions = questionsDatabase[theme];
-            currentQuestionIndex = 0;
-            score = 0;
+        // --- 3. LOGIQUE DU DASHBOARD ---
+        function updateDashboardUI() {
+            // Taux global
+            const tauxElem = document.getElementById('stat-taux');
+            if (userStats.totalQuestions === 0) {
+                tauxElem.innerText = "0%";
+            } else {
+                const pourcentage = Math.round((userStats.totalCorrect / userStats.totalQuestions) * 100);
+                tauxElem.innerText = pourcentage + "%";
+            }
+
+            // Calcul du point fort et point faible
+            let bestTheme = "-";
+            let worstTheme = "-";
+            let highestRate = -1;
+            let lowestRate = 101;
+
+            for (const theme in userStats.themes) {
+                const statsTheme = userStats.themes[theme];
+                if (statsTheme.total > 0) {
+                    const rate = (statsTheme.correct / statsTheme.total) * 100;
+                    if (rate > highestRate) { highestRate = rate; bestTheme = theme.split(" ")[0]; } // Prend juste le premier mot pour pas que ce soit trop long
+                    if (rate < lowestRate) { lowestRate = rate; worstTheme = theme.split(" ")[0]; }
+                }
+            }
+
+            document.getElementById('stat-fort').innerText = bestTheme;
+            document.getElementById('stat-faible').innerText = worstTheme === bestTheme && highestRate === lowestRate && highestRate > -1 ? "-" : worstTheme;
+        }
+
+        function initRooms() {
+            const container = document.getElementById('rooms-container');
+            container.innerHTML = "";
             
-            currentThemeTitle.innerText = "Thème : " + theme;
-            themeMenu.style.display = "none";
-            quizSection.style.display = "block";
-            homeBtn.style.display = "none";
+            for (const theme in questionsDatabase) {
+                const roomData = questionsDatabase[theme];
+                
+                // On prépare les stats de ce thème si elles n'existent pas
+                if(!userStats.themes[theme]) {
+                    userStats.themes[theme] = { total: 0, correct: 0 };
+                }
+
+                const card = document.createElement("div");
+                card.classList.add("room-card");
+                card.onclick = () => startQuiz(theme);
+                
+                card.innerHTML = `
+                    <div class="room-icon">${roomData.icon}</div>
+                    <div class="room-title">${theme}</div>
+                    <div class="room-info">${roomData.questions.length} Questions</div>
+                `;
+                container.appendChild(card);
+            }
+            updateDashboardUI();
+        }
+
+        // --- 4. LOGIQUE DU QUIZ ---
+        let currentTheme = "";
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let sessionScore = 0;
+
+        const viewDashboard = document.getElementById('dashboard-view');
+        const viewQuiz = document.getElementById('quiz-view');
+
+        function startQuiz(theme) {
+            currentTheme = theme;
+            currentQuestions = questionsDatabase[theme].questions;
+            currentIndex = 0;
+            sessionScore = 0;
+
+            document.getElementById('quiz-theme-title').innerText = theme;
+            viewDashboard.style.display = "none";
+            viewQuiz.style.display = "block";
             
             loadQuestion();
         }
 
         function loadQuestion() {
-            feedbackSection.style.display = "none";
-            optionsContainer.innerHTML = "";
-            nextBtn.style.display = "inline-block";
+            document.getElementById('feedback-section').style.display = "none";
+            document.getElementById('next-btn').style.display = "block";
+            document.getElementById('finish-btn').style.display = "none";
             
-            const currentQuestion = currentQuestions[currentQuestionIndex];
-            questionTextElement.innerText = currentQuestion.question;
-            scoreDisplay.innerText = `Score : ${score} / ${currentQuestionIndex}`;
+            const q = currentQuestions[currentIndex];
+            document.getElementById('question-text').innerText = q.question;
+            document.getElementById('score-display').innerText = `Q. ${currentIndex + 1}/${currentQuestions.length}`;
+            
+            const progress = (currentIndex / currentQuestions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
 
-            currentQuestion.choix.forEach(choix => {
-                const button = document.createElement("button");
-                button.innerText = choix;
-                button.classList.add("btn");
-                button.onclick = () => verifierReponse(button, choix, currentQuestion.bonne_reponse, currentQuestion.source);
-                optionsContainer.appendChild(button);
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = "";
+
+            q.choix.forEach(choix => {
+                const btn = document.createElement("button");
+                btn.classList.add("option-btn");
+                btn.innerText = choix;
+                btn.onclick = () => checkAnswer(btn, choix, q.bonne_reponse, q.source);
+                optionsContainer.appendChild(btn);
             });
         }
 
-        function verifierReponse(selectedButton, selectedChoice, correctAnswer, source) {
-            const allButtons = optionsContainer.querySelectorAll(".btn");
-            allButtons.forEach(btn => btn.disabled = true);
+        function checkAnswer(btn, selected, correct, source) {
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(b => b.disabled = true);
 
-            if (selectedChoice === correctAnswer) {
-                selectedButton.classList.add("correct");
-                feedbackTitle.innerText = "✅ Bonne réponse !";
-                score++;
+            userStats.totalQuestions++;
+            userStats.themes[currentTheme].total++;
+
+            const feedbackTitle = document.getElementById('feedback-title');
+            
+            if (selected === correct) {
+                btn.classList.add('correct');
+                feedbackTitle.innerText = "✅ Excellent !";
+                feedbackTitle.style.color = "var(--correct)";
+                sessionScore++;
+                userStats.totalCorrect++;
+                userStats.themes[currentTheme].correct++;
             } else {
-                selectedButton.classList.add("incorrect");
-                feedbackTitle.innerText = `❌ Mauvaise réponse. La bonne réponse était : ${correctAnswer}`;
-                allButtons.forEach(btn => {
-                    if (btn.innerText === correctAnswer) {
-                        btn.classList.add("correct");
-                    }
-                });
+                btn.classList.add('incorrect');
+                feedbackTitle.innerHTML = `❌ Oups... La réponse était : ${correct}`;
+                feedbackTitle.style.color = "var(--incorrect)";
+                allBtns.forEach(b => { if (b.innerText === correct) b.classList.add('correct'); });
             }
 
-            scoreDisplay.innerText = `Score : ${score} / ${currentQuestionIndex + 1}`;
-            sourceText.innerHTML = `<strong>Source / Explication :</strong> ${source}`;
-            feedbackSection.style.display = "block";
+            document.getElementById('source-text').innerHTML = `<strong>Source :</strong> ${source}`;
+            document.getElementById('feedback-section').style.display = "block";
+
+            if (currentIndex === currentQuestions.length - 1) {
+                document.getElementById('progress-bar').style.width = "100%";
+                document.getElementById('next-btn').style.display = "none";
+                document.getElementById('finish-btn').style.display = "block";
+            }
         }
 
         function nextQuestion() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < currentQuestions.length) {
-                loadQuestion();
-            } else {
-                questionTextElement.innerText = "🎉 Quiz terminé !";
-                optionsContainer.innerHTML = "";
-                feedbackSection.style.display = "none";
-                scoreDisplay.innerText = `Score final : ${score} / ${currentQuestions.length}`;
-                nextBtn.style.display = "none";
-                homeBtn.style.display = "block";
-            }
+            currentIndex++;
+            loadQuestion();
         }
 
-        function retourAccueil() {
-            quizSection.style.display = "none";
-            themeMenu.style.display = "block";
-            initThemes(); // Met à jour le compteur de questions
+        function retourDashboard() {
+            saveStats(); // Sauvegarde les stats dans le navigateur en partant
+            viewQuiz.style.display = "none";
+            viewDashboard.style.display = "block";
         }
 
-        initThemes();
+        // Lancement au démarrage
+        initRooms();
     </script>
 </body>
 </html>
