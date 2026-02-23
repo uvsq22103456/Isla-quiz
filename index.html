@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Islamique</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #quiz-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        #score-display {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        #question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .option-btn:hover {
+            background-color: #dcdde1;
+        }
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        /* Couleurs pour les bonnes/mauvaises réponses */
+        .correct { background-color: #2ecc71 !important; color: white; border-color: #27ae60; }
+        .incorrect { background-color: #e74c3c !important; color: white; border-color: #c0392b; }
+        
+        #feedback-section {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9ca24;
+            border-radius: 8px;
+            color: #333;
+            text-align: left;
+        }
+        #source-text {
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        #next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        #next-btn:hover { background-color: #3498db; }
+    </style>
+</head>
+<body>
+
+    <div id="quiz-container">
+        <h1>Quiz sur l'Islam</h1>
+        <div id="score-display">Score : 0 / 0</div>
+        
+        <div id="question-text">Chargement de la question...</div>
+        <div id="options-container"></div>
+
+        <div id="feedback-section">
+            <strong id="feedback-title"></strong>
+            <div id="source-text"></div>
+            <button id="next-btn" onclick="nextQuestion()">Question suivante</button>
+        </div>
+    </div>
+
+    <script>
+        // C'est ici que tu colleras les centaines de questions (au format JSON) que je vais te générer !
+        // J'ai mis 2 questions d'exemple pour que tu puisses tester l'application.
+          {
+    "question": "Combien de sourates (chapitres) compte le Coran ?",
+    "choix": ["110", "112", "114", "120"],
+    "bonne_reponse": "114",
+    "source": "Consensus des savants (Ijma') sur la compilation du Mus'haf."
+  },
+  {
+    "question": "Quel ange a été chargé de transmettre la révélation au Prophète Muhammad (ﷺ) ?",
+    "choix": ["Mika'il (Michel)", "Jibril (Gabriel)", "Israfil", "Malik"],
+    "bonne_reponse": "Jibril (Gabriel)",
+    "source": "Coran, Sourate Al-Baqarah (2), verset 97."
+  },
+  {
+    "question": "Quelle sourate est appelée 'Le tiers du Coran' par le Prophète (ﷺ) ?",
+    "choix": ["Al-Fatiha", "Al-Ikhlas", "Al-Falaq", "An-Nas"],
+    "bonne_reponse": "Al-Ikhlas",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 5013."
+  },
+  {
+    "question": "Quelle est la seule sourate du Coran qui ne commence pas par la formule 'Bismillah ar-Rahman ar-Rahim' ?",
+    "choix": ["Al-Anfal", "At-Tawbah (Le Repentir)", "Al-Kahf (La Caverne)", "Maryam"],
+    "bonne_reponse": "At-Tawbah (Le Repentir)",
+    "source": "Structure officielle du Coran (Mus'haf). Les savants expliquent qu'elle commence par un désaveu envers les polythéistes."
+  },
+  {
+    "question": "Quel compagnon a été chargé par le calife Abu Bakr de compiler le Coran en un seul volume pour la première fois ?",
+    "choix": ["Ali ibn Abi Talib", "Uthman ibn Affan", "Zayd ibn Thabit", "Abdullah ibn Mas'ud"],
+    "bonne_reponse": "Zayd ibn Thabit",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 4986."
+  },
+  {
+    "question": "Quel est le seul compagnon (Sahabi) dont le nom est explicitement mentionné dans le Coran ?",
+    "choix": ["Abu Bakr As-Siddiq", "Umar ibn Al-Khattab", "Zayd ibn Haritha", "Bilal ibn Rabah"],
+    "bonne_reponse": "Zayd ibn Haritha",
+    "source": "Coran, Sourate Al-Ahzab (33), verset 37."
+  },
+  {
+    "question": "Dans quelle sourate trouve-t-on DEUX FOIS la formule 'Bismillah ar-Rahman ar-Rahim' ?",
+    "choix": ["Al-Baqarah", "An-Naml (Les Fourmis)", "Yusuf", "Al-Mulk"],
+    "bonne_reponse": "An-Naml (Les Fourmis)",
+    "source": "Coran, Sourate An-Naml (27) : au début de la sourate, et au verset 30 (dans la lettre de Souleyman/Salomon)."
+  },
+  {
+    "question": "D'après le Coran, pendant combien d'années le prophète Nuh (Noé) a-t-il prêché son peuple avant le déluge ?",
+    "choix": ["950 ans", "300 ans", "1000 ans", "120 ans"],
+    "bonne_reponse": "950 ans",
+    "source": "Coran, Sourate Al-'Ankabut (29), verset 14 ('...mille ans moins cinquante années')."
+  },
+  {
+    "question": "Quelle est la plus longue sourate du Coran ?",
+    "choix": ["Al-Imran", "An-Nisa", "Al-Baqarah", "Al-Ma'idah"],
+    "bonne_reponse": "Al-Baqarah",
+    "source": "Consensus : Elle contient 286 versets."
+  },
+  {
+    "question": "Combien de prophètes sont nommément cités dans le Coran ?",
+    "choix": ["25", "99", "313", "124 000"],
+    "bonne_reponse": "25",
+    "source": "Consensus des exégètes basés sur les textes coraniques (Adam, Nuh, Ibrahim, Musa, Isa, Muhammad, etc.)."
+  }
+
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionTextElement = document.getElementById("question-text");
+        const optionsContainer = document.getElementById("options-container");
+        const feedbackSection = document.getElementById("feedback-section");
+        const feedbackTitle = document.getElementById("feedback-title");
+        const sourceText = document.getElementById("source-text");
+        const scoreDisplay = document.getElementById("score-display");
+
+        function loadQuestion() {
+            // Réinitialise l'affichage
+            feedbackSection.style.display = "none";
+            optionsContainer.innerHTML = "";
+            
+            // Récupère la question actuelle
+            const currentQuestion = questionsDatabase[currentQuestionIndex];
+            questionTextElement.innerText = currentQuestion.question;
+            scoreDisplay.innerText = `Score : ${score} / ${currentQuestionIndex}`;
+
+            // Crée les boutons pour chaque choix
+            currentQuestion.choix.forEach(choix => {
+                const button = document.createElement("button");
+                button.innerText = choix;
+                button.classList.add("option-btn");
+                button.onclick = () => checkAnswer(button, choix, currentQuestion.bonne_reponse, currentQuestion.source);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedButton, selectedChoice, correctAnswer, source) {
+            // Désactive tous les boutons pour empêcher de cliquer plusieurs fois
+            const allButtons = document.querySelectorAll(".option-btn");
+            allButtons.forEach(btn => btn.disabled = true);
+
+            // Vérifie la réponse
+            if (selectedChoice === correctAnswer) {
+                selectedButton.classList.add("correct");
+                feedbackTitle.innerText = "✅ Bonne réponse !";
+                score++;
+            } else {
+                selectedButton.classList.add("incorrect");
+                feedbackTitle.innerText = `❌ Mauvaise réponse. La bonne réponse était : ${correctAnswer}`;
+                
+                // Met en vert le bouton qui contenait la bonne réponse
+                allButtons.forEach(btn => {
+                    if (btn.innerText === correctAnswer) {
+                        btn.classList.add("correct");
+                    }
+                });
+            }
+
+            // Met à jour le score et affiche la source
+            scoreDisplay.innerText = `Score : ${score} / ${currentQuestionIndex + 1}`;
+            sourceText.innerHTML = `<strong>Source :</strong> ${source}`;
+            feedbackSection.style.display = "block";
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questionsDatabase.length) {
+                loadQuestion();
+            } else {
+                questionTextElement.innerText = "🎉 Quiz terminé !";
+                optionsContainer.innerHTML = "";
+                feedbackSection.style.display = "none";
+                scoreDisplay.innerText = `Score final : ${score} / ${questionsDatabase.length}`;
+            }
+        }
+
+        // Lance la première question au démarrage
+        loadQuestion();
+    </script>
+</body>
+</html>
