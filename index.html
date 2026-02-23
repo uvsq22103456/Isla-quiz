@@ -24,11 +24,8 @@
             width: 90%;
             text-align: center;
         }
-        h1, h2 {
-            color: #2c3e50;
-        }
+        h1, h2 { color: #2c3e50; }
         
-        /* Styles pour les boutons (Thèmes et Options) */
         .btn {
             display: block;
             width: 100%;
@@ -41,33 +38,19 @@
             font-size: 1.1em;
             transition: all 0.3s ease;
         }
-        .btn:hover {
-            background-color: #dcdde1;
-        }
+        .btn:hover { background-color: #dcdde1; }
         
-        /* Menu des thèmes */
         #theme-menu .btn {
             background-color: #34495e;
             color: white;
             border: none;
         }
-        #theme-menu .btn:hover {
-            background-color: #2c3e50;
-        }
+        #theme-menu .btn:hover { background-color: #2c3e50; }
 
-        /* Section Quiz */
         #quiz-section { display: none; }
         
-        #score-display {
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #7f8c8d;
-        }
-        #question-text {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
+        #score-display { font-weight: bold; margin-bottom: 20px; color: #7f8c8d; }
+        #question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: bold; }
         
         .btn:disabled { cursor: not-allowed; opacity: 0.9; }
         .correct { background-color: #2ecc71 !important; color: white; border-color: #27ae60; }
@@ -82,12 +65,8 @@
             border-radius: 4px;
             text-align: left;
         }
-        #source-text {
-            font-style: italic;
-            font-size: 0.95em;
-            margin-top: 10px;
-            color: #2c3e50;
-        }
+        #source-text { font-style: italic; font-size: 0.95em; margin-top: 10px; color: #2c3e50; }
+        
         #next-btn, #home-btn {
             margin-top: 20px;
             padding: 10px 20px;
@@ -129,7 +108,6 @@
     </div>
 
     <script>
-        // LA BASE DE DONNÉES CLASSÉE PAR THÈMES
         const questionsDatabase = {
             "Le Coran": [
                 {
@@ -139,10 +117,58 @@
                     "source": "Consensus des savants (Ijma') sur la compilation du Mus'haf."
                 },
                 {
+                    "question": "Quel ange a été chargé de transmettre la révélation au Prophète Muhammad (ﷺ) ?",
+                    "choix": ["Mika'il (Michel)", "Jibril (Gabriel)", "Israfil", "Malik"],
+                    "bonne_reponse": "Jibril (Gabriel)",
+                    "source": "Coran, Sourate Al-Baqarah (2), verset 97."
+                },
+                {
+                    "question": "Quelle sourate est appelée 'Le tiers du Coran' par le Prophète (ﷺ) ?",
+                    "choix": ["Al-Fatiha", "Al-Ikhlas", "Al-Falaq", "An-Nas"],
+                    "bonne_reponse": "Al-Ikhlas",
+                    "source": "Hadith authentique : Sahih Al-Bukhari, n° 5013."
+                },
+                {
+                    "question": "Quelle est la seule sourate du Coran qui ne commence pas par la formule 'Bismillah ar-Rahman ar-Rahim' ?",
+                    "choix": ["Al-Anfal", "At-Tawbah (Le Repentir)", "Al-Kahf (La Caverne)", "Maryam"],
+                    "bonne_reponse": "At-Tawbah (Le Repentir)",
+                    "source": "Structure officielle du Coran (Mus'haf). Les savants expliquent qu'elle commence par un désaveu envers les polythéistes."
+                },
+                {
+                    "question": "Quel compagnon a été chargé par le calife Abu Bakr de compiler le Coran en un seul volume pour la première fois ?",
+                    "choix": ["Ali ibn Abi Talib", "Uthman ibn Affan", "Zayd ibn Thabit", "Abdullah ibn Mas'ud"],
+                    "bonne_reponse": "Zayd ibn Thabit",
+                    "source": "Hadith authentique : Sahih Al-Bukhari, n° 4986."
+                },
+                {
+                    "question": "Quel est le seul compagnon (Sahabi) dont le nom est explicitement mentionné dans le Coran ?",
+                    "choix": ["Abu Bakr As-Siddiq", "Umar ibn Al-Khattab", "Zayd ibn Haritha", "Bilal ibn Rabah"],
+                    "bonne_reponse": "Zayd ibn Haritha",
+                    "source": "Coran, Sourate Al-Ahzab (33), verset 37."
+                },
+                {
+                    "question": "Dans quelle sourate trouve-t-on DEUX FOIS la formule 'Bismillah ar-Rahman ar-Rahim' ?",
+                    "choix": ["Al-Baqarah", "An-Naml (Les Fourmis)", "Yusuf", "Al-Mulk"],
+                    "bonne_reponse": "An-Naml (Les Fourmis)",
+                    "source": "Coran, Sourate An-Naml (27) : au début de la sourate, et au verset 30 (dans la lettre de Souleyman/Salomon)."
+                },
+                {
+                    "question": "D'après le Coran, pendant combien d'années le prophète Nuh (Noé) a-t-il prêché son peuple avant le déluge ?",
+                    "choix": ["950 ans", "300 ans", "1000 ans", "120 ans"],
+                    "bonne_reponse": "950 ans",
+                    "source": "Coran, Sourate Al-'Ankabut (29), verset 14 ('...mille ans moins cinquante années')."
+                },
+                {
                     "question": "Quelle est la plus longue sourate du Coran ?",
                     "choix": ["Al-Imran", "An-Nisa", "Al-Baqarah", "Al-Ma'idah"],
                     "bonne_reponse": "Al-Baqarah",
                     "source": "Consensus : Elle contient 286 versets."
+                },
+                {
+                    "question": "Combien de prophètes sont nommément cités dans le Coran ?",
+                    "choix": ["25", "99", "313", "124 000"],
+                    "bonne_reponse": "25",
+                    "source": "Consensus des exégètes basés sur les textes coraniques (Adam, Nuh, Ibrahim, Musa, Isa, Muhammad, etc.)."
                 }
             ],
             "La Vie du Prophète (ﷺ)": [
@@ -151,12 +177,6 @@
                     "choix": ["Médine", "La Mecque", "Jérusalem", "Taëf"],
                     "bonne_reponse": "La Mecque",
                     "source": "Consensus historique et biographique (Sira)."
-                },
-                {
-                    "question": "Quel âge avait le Prophète (ﷺ) lorsqu'il a reçu la première révélation ?",
-                    "choix": ["33 ans", "40 ans", "50 ans", "63 ans"],
-                    "bonne_reponse": "40 ans",
-                    "source": "Hadith authentique : Sahih Al-Bukhari et biographie prophétique (Sira)."
                 }
             ],
             "Les Piliers de l'Islam": [
@@ -169,12 +189,10 @@
             ]
         };
 
-        // VARIABLES DU JEU
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
 
-        // ELEMENTS HTML
         const themeMenu = document.getElementById("theme-menu");
         const themeButtonsContainer = document.getElementById("theme-buttons");
         const quizSection = document.getElementById("quiz-section");
@@ -188,8 +206,8 @@
         const nextBtn = document.getElementById("next-btn");
         const homeBtn = document.getElementById("home-btn");
 
-        // INITIALISATION DES BOUTONS DE THÈMES
         function initThemes() {
+            themeButtonsContainer.innerHTML = "";
             for (const theme in questionsDatabase) {
                 const btn = document.createElement("button");
                 btn.classList.add("btn");
@@ -199,7 +217,6 @@
             }
         }
 
-        // LANCER UN QUIZ SELON LE THÈME CHOISI
         function lancerQuiz(theme) {
             currentQuestions = questionsDatabase[theme];
             currentQuestionIndex = 0;
@@ -213,7 +230,6 @@
             loadQuestion();
         }
 
-        // CHARGER UNE QUESTION
         function loadQuestion() {
             feedbackSection.style.display = "none";
             optionsContainer.innerHTML = "";
@@ -232,7 +248,6 @@
             });
         }
 
-        // VÉRIFIER LA RÉPONSE
         function verifierReponse(selectedButton, selectedChoice, correctAnswer, source) {
             const allButtons = optionsContainer.querySelectorAll(".btn");
             allButtons.forEach(btn => btn.disabled = true);
@@ -256,7 +271,6 @@
             feedbackSection.style.display = "block";
         }
 
-        // PASSER À LA QUESTION SUIVANTE
         function nextQuestion() {
             currentQuestionIndex++;
             if (currentQuestionIndex < currentQuestions.length) {
@@ -266,17 +280,17 @@
                 optionsContainer.innerHTML = "";
                 feedbackSection.style.display = "none";
                 scoreDisplay.innerText = `Score final : ${score} / ${currentQuestions.length}`;
-                homeBtn.style.display = "block"; // Affiche le bouton retour à l'accueil
+                nextBtn.style.display = "none";
+                homeBtn.style.display = "block";
             }
         }
 
-        // RETOURNER AU MENU PRINCIPAL
         function retourAccueil() {
             quizSection.style.display = "none";
             themeMenu.style.display = "block";
+            initThemes(); // Met à jour le compteur de questions
         }
 
-        // Démarrer l'application
         initThemes();
     </script>
 </body>
