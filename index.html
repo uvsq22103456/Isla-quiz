@@ -169,33 +169,66 @@
 
     <script>
         const questionsDatabase = {
-            "Le Coran": {
-                icon: "📖",
-                questions: [
-                    { "question": "Combien de sourates compte le Coran ?", "choix": ["110", "112", "114", "120"], "bonne_reponse": "114", "source": "Consensus des savants." },
-                    { "question": "Quel ange a transmis la révélation ?", "choix": ["Mika'il", "Jibril", "Israfil", "Malik"], "bonne_reponse": "Jibril", "source": "Coran, 2:97." }
-                ]
-            },
-            "La Sira": {
-                icon: "🕋",
-                questions: [
-                    { "question": "Dans quelle ville est né le Prophète (ﷺ) ?", "choix": ["Médine", "La Mecque", "Jérusalem", "Taëf"], "bonne_reponse": "La Mecque", "source": "Sira historique." },
-                    { "question": "Comment s'appelait sa mère ?", "choix": ["Khadija", "Amina", "Halima", "Fatima"], "bonne_reponse": "Amina", "source": "Sira d'Ibn Ishaq." }
-                ]
-            },
-            "Les Piliers": {
-                icon: "⭐",
-                questions: [
-                    { "question": "Combien y a-t-il de piliers en Islam ?", "choix": ["3", "4", "5", "6"], "bonne_reponse": "5", "source": "Hadith de Jibril (Sahih Muslim)." }
-                ]
-            },
-            "Les Prophètes": {
-                icon: "🐪",
-                questions: [
-                    { "question": "Quel prophète a construit l'Arche ?", "choix": ["Musa", "Ibrahim", "Nuh (Noé)", "Isa"], "bonne_reponse": "Nuh (Noé)", "source": "Coran." }
-                ]
-            }
-        };
+    "Le Coran": {
+        icon: "📖",
+        questions: [
+            { "question": "Combien de sourates compte le Coran ?", "choix": ["110", "112", "114", "120"], "bonne_reponse": "114", "source": "Tradition unanime." },
+            { "question": "Quelle est la plus longue sourate ?", "choix": ["Al-Imran", "Al-Baqara", "An-Nisa", "Al-Maidah"], "bonne_reponse": "Al-Baqara", "source": "286 versets." },
+            { "question": "Quelle sourate ne commence pas par la Basmala ?", "choix": ["Al-Fatiha", "At-Tawbah", "Al-Kahf", "Yasin"], "bonne_reponse": "At-Tawbah", "source": "Structure du Mus'haf." }
+        ]
+    },
+    "La Sira": {
+        icon: "🕋",
+        questions: [
+            { "question": "En quelle année est né le Prophète (ﷺ) ?", "choix": ["570 ap. J-C", "610 ap. J-C", "622 ap. J-C", "530 ap. J-C"], "bonne_reponse": "570 ap. J-C", "source": "L'Année de l'Éléphant." },
+            { "question": "Comment s'appelait le grand-père du Prophète (ﷺ) ?", "choix": ["Abu Talib", "Abd al-Muttalib", "Abdullah", "Hashim"], "bonne_reponse": "Abd al-Muttalib", "source": "Sira Ibn Hisham." }
+        ]
+    },
+    "Les Femmes": {
+        icon: "🧕",
+        questions: [
+            { "question": "Qui fut la première personne à se convertir à l'Islam ?", "choix": ["Abu Bakr", "Ali", "Khadija bint Khuwaylid", "Zayd"], "bonne_reponse": "Khadija bint Khuwaylid", "source": "Consensus des historiens." },
+            { "question": "Quelle épouse du Prophète (ﷺ) était surnommée 'L'étudiante' pour son immense savoir ?", "choix": ["Hafsa", "Aïcha", "Sawda", "Umm Salama"], "bonne_reponse": "Aïcha", "source": "Elle a rapporté plus de 2000 hadiths." },
+            { "question": "Quelle femme est la seule citée par son nom propre dans le Coran ?", "choix": ["Asiya", "Maryam (Marie)", "Sarah", "Hajar"], "bonne_reponse": "Maryam (Marie)", "source": "Sourate Maryam (19)." },
+            { "question": "Qui était la fille du Prophète (ﷺ) surnommée 'La resplendissante' ?", "choix": ["Zaynab", "Ruqayya", "Umm Kulthum", "Fatima az-Zahra"], "bonne_reponse": "Fatima az-Zahra", "source": "Sira prophétique." }
+        ]
+    },
+    "Jurisprudence": {
+        icon: "⚖️",
+        questions: [
+            { "question": "Combien y a-t-il de grandes écoles de jurisprudence (Madhahib) chez les Sunnites ?", "choix": ["2", "3", "4", "5"], "bonne_reponse": "4", "source": "Maliki, Hanafi, Shafi'i, Hanbali." },
+            { "question": "Quelle école est majoritaire au Maghreb (Maroc, Algérie, Tunisie) ?", "choix": ["Hanafi", "Maliki", "Shafi'i", "Hanbali"], "bonne_reponse": "Maliki", "source": "Basée sur l'enseignement de l'Imam Malik à Médine." },
+            { "question": "L'Imam ach-Chafi'i était l'élève de quel autre grand Imam ?", "choix": ["Abu Hanifa", "Imam Malik", "Ahmad ibn Hanbal", "Al-Bukhari"], "bonne_reponse": "Imam Malik", "source": "Histoire des Madhahib." },
+            { "question": "Comment appelle-t-on l'effort de réflexion des savants pour déduire des règles ?", "choix": ["Le Tafsir", "L'Ijtihad", "Le Tajwid", "Le Tawhid"], "bonne_reponse": "L'Ijtihad", "source": "Principes du Fiqh (Ussul al-Fiqh)." }
+        ]
+    },
+    "Les Prophètes": {
+        icon: "🐪",
+        questions: [
+            { "question": "Quel prophète a parlé alors qu'il était encore au berceau ?", "choix": ["Yahya", "Issa (Jésus)", "Musa", "Ismaïl"], "bonne_reponse": "Issa (Jésus)", "source": "Sourate Maryam." },
+            { "question": "Quel prophète a reçu 'Les Psaumes' (Az-Zabur) ?", "choix": ["Daoud (David)", "Souleyman", "Ibrahim", "Musa"], "bonne_reponse": "Daoud (David)", "source": "Coran, 17:55." }
+        ]
+    },
+    "Piliers & Fiqh": {
+        icon: "⭐",
+        questions: [
+            { "question": "Quel est le 3ème pilier de l'Islam ?", "choix": ["La Prière", "La Zakat", "Le Jeûne", "Le Pèlerinage"], "bonne_reponse": "La Zakat", "source": "Hadith de Jibril." }
+        ]
+    },
+    "Ramadan": {
+        icon: "🌙",
+        questions: [
+            { "question": "Durant quelle nuit le Coran a-t-il commencé à être révélé ?", "choix": ["La nuit du destin (Laylat al-Qadr)", "La nuit de l'ascension", "La nuit du vendredi", "Le 1er jour du mois"], "bonne_reponse": "La nuit du destin (Laylat al-Qadr)", "source": "Sourate Al-Qadr (97)." },
+            { "question": "Quel est le nom de la porte du Paradis réservée à ceux qui jeûnent ?", "choix": ["Ar-Rayyan", "Al-Firdaws", "Al-Khouloud", "Al-Ma'wa"], "bonne_reponse": "Ar-Rayyan", "source": "Hadith (Sahih Al-Bukhari)." }
+        ]
+    },
+    "Comportement": {
+        icon: "💎",
+        questions: [
+            { "question": "Le Prophète (ﷺ) a dit : 'Le meilleur d'entre vous est celui qui est le meilleur avec...'", "choix": ["Ses amis", "Sa famille/ses femmes", "Ses voisins", "Ses collègues"], "bonne_reponse": "Sa famille/ses femmes", "source": "Hadith (Tirmidhi)." }
+        ]
+    }
+};
 
         let userStats = JSON.parse(localStorage.getItem('islamQuizStats')) || { totalQuestions: 0, totalCorrect: 0, themes: {} };
 
