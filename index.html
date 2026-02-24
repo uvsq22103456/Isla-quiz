@@ -7,22 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #059669;
-            --primary-hover: #047857;
-            --bg-color: #f0fdf4;
-            --card-bg: #ffffff;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --correct: #10b981;
-            --incorrect: #ef4444;
-            --accent: #f59e0b;
+            --primary: #111827; /* Noir anthracite très élégant */
+            --primary-hover: #374151;
+            --bg-color: #F8FAFC; /* Fond gris très clair, pur et uni */
+            --card-bg: #FFFFFF;
+            --text-main: #0F172A; /* Texte sombre */
+            --text-muted: #64748B;
+            --correct: #0F766E; /* Vert canard mat pour les bonnes réponses */
+            --incorrect: #9F1239; /* Rouge bordeaux profond pour les erreurs */
+            --accent: #D4AF37; /* Touche dorée */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
-            background-image: radial-gradient(#d1fae5 1px, transparent 1px);
-            background-size: 20px 20px;
             color: var(--text-main);
             margin: 0;
             padding: 20px;
@@ -138,7 +136,7 @@
                         <div class="stat-label">À réviser</div>
                     </div>
                 </div>
-                <button class="action-btn" style="margin-top: 15px; background-color: #ef4444; padding: 10px;" onclick="resetStats()">Réinitialiser mes stats</button>
+                <button class="action-btn" style="margin-top: 15px; background-color: var(--incorrect); padding: 10px;" onclick="resetStats()">Réinitialiser mes stats</button>
             </div>
 
             <h2 style="font-size: 1.2em; margin-bottom: 15px;">📚 Les Salons d'apprentissage</h2>
@@ -367,7 +365,7 @@
     "source": "Hadith authentique : Sahih Muslim, n° 2842 ('L'Enfer sera amené ce jour-là avec 70 000 brides, chaque bride tenue par 70 000 anges')."
   }
     ]
-  }
+  },
 
 
 
@@ -467,6 +465,96 @@
     "choix": ["Al-Fatiha", "Al-Baqarah", "Yasin", "Al-Ikhlas"],
     "bonne_reponse": "Al-Baqarah",
     "source": "Consensus des savants : Al-Baqarah est la première grande sourate révélée à Médine (Médinoise)."
+  },
+  {
+    "question": "Pendant combien d'années au total le Coran a-t-il été révélé au Prophète Muhammad (ﷺ) ?",
+    "choix": ["10 ans", "13 ans", "23 ans", "40 ans"],
+    "bonne_reponse": "23 ans",
+    "source": "Consensus historique (13 ans à La Mecque et 10 ans à Médine)."
+  },
+  {
+    "question": "Quel est le nom de l'Ange qui a été chargé de transmettre la révélation du Coran au Prophète (ﷺ) ?",
+    "choix": ["Mikail", "Israfil", "Jibril (Gabriel)", "Malik"],
+    "bonne_reponse": "Jibril (Gabriel)",
+    "source": "Coran, Sourate Al-Baqarah (2), verset 97."
+  },
+  {
+    "question": "Quelle sourate du Coran est considérée comme équivalente à 'un tiers du Coran' en termes de récompense de récitation ?",
+    "choix": ["Al-Fatiha", "Yasin", "Al-Ikhlas", "Al-Kawthar"],
+    "bonne_reponse": "Al-Ikhlas",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 5013."
+  },
+  {
+    "question": "Quel est le tout premier mot du Coran qui a été révélé au Prophète (ﷺ) dans la grotte de Hira ?",
+    "choix": ["Bismillah (Au nom d'Allah)", "Iqra (Lis)", "Qul (Dis)", "Alhamdulillah (Louange à Allah)"],
+    "bonne_reponse": "Iqra (Lis)",
+    "source": "Coran, Sourate Al-'Alaq (96), verset 1. Hadith : Sahih Al-Bukhari, n° 3."
+  },
+  {
+    "question": "Quelle sourate a la particularité de contenir DEUX fois la formule 'Bismillah ir-Rahman ir-Rahim' (au début et au verset 30) ?",
+    "choix": ["Al-Baqarah", "An-Naml (Les Fourmis)", "Al-Kahf (La Caverne)", "Maryam"],
+    "bonne_reponse": "An-Naml (Les Fourmis)",
+    "source": "Coran, Sourate An-Naml (27). Le verset 30 cite la lettre du prophète Salomon à la reine de Saba."
+  },
+  {
+    "question": "Quel Prophète est le plus mentionné par son nom dans le Coran (136 fois) ?",
+    "choix": ["Muhammad (ﷺ)", "Ibrahim (Abraham)", "Isa (Jésus)", "Musa (Moïse)"],
+    "bonne_reponse": "Musa (Moïse)",
+    "source": "Statistiques coraniques (L'histoire de Moïse et de Pharaon est la plus détaillée du Coran)."
+  },
+  {
+    "question": "Quel Compagnon, qui était l'un des scribes de la révélation, a été chargé par le calife Abu Bakr de compiler le Coran en un seul volume pour la première fois ?",
+    "choix": ["Ali ibn Abi Talib", "Zayd ibn Thabit", "Uthman ibn Affan", "Abdullah ibn Mas'ud"],
+    "bonne_reponse": "Zayd ibn Thabit",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 4986."
+  },
+  {
+    "question": "Sous le califat de quel Compagnon le Coran a-t-il été standardisé en un seul 'Mus'haf' officiel pour éviter les divergences de prononciation ?",
+    "choix": ["Abu Bakr", "Umar ibn Al-Khattab", "Uthman ibn Affan", "Ali ibn Abi Talib"],
+    "bonne_reponse": "Uthman ibn Affan",
+    "source": "Histoire islamique (Le fameux 'Mus'haf Uthmani', copié et envoyé dans plusieurs grandes villes)."
+  },
+  {
+    "question": "Quelle est la sourate la plus courte du Coran, composée de seulement 3 versets ?",
+    "choix": ["Al-Asr", "An-Nasr", "Al-Ikhlas", "Al-Kawthar"],
+    "bonne_reponse": "Al-Kawthar",
+    "source": "Coran, Sourate Al-Kawthar (108)."
+  },
+  {
+    "question": "Comment appelle-t-on la science religieuse qui étudie les règles de récitation et d'embellissement de la voix lors de la lecture du Coran ?",
+    "choix": ["Le Tafsir", "Le Tajwid", "Le Tawhid", "Le Fiqh"],
+    "bonne_reponse": "Le Tajwid",
+    "source": "Terminologie islamique (du verbe Jawwada = rendre beau/excellent)."
+  },
+  {
+    "question": "Combien de 'Hizb' (sections) composent le Coran, sachant qu'un Hizb est la moitié d'un Juz' ?",
+    "choix": ["30", "60", "90", "114"],
+    "bonne_reponse": "60",
+    "source": "Division classique du Coran (30 Juz', chaque Juz' étant divisé en 2 Hizb = 60 Hizb)."
+  },
+  {
+    "question": "Dans quelle sourate se trouve le 'Verset du Trône' (Ayat al-Kursi), décrit par le Prophète comme le plus grand verset du Livre d'Allah ?",
+    "choix": ["Al-Imran", "Al-Baqarah", "An-Nisa", "Al-Kahf"],
+    "bonne_reponse": "Al-Baqarah",
+    "source": "Coran, Sourate Al-Baqarah (2), verset 255."
+  },
+  {
+    "question": "De manière générale, quels sont les thèmes principaux des sourates 'Médinoises' (révélées après l'Hégire) ?",
+    "choix": ["Les histoires des anciens prophètes", "La description de l'Enfer et du Paradis", "Le Tawhid (Dogme)", "La jurisprudence, les lois et l'organisation de la société"],
+    "bonne_reponse": "La jurisprudence, les lois et l'organisation de la société",
+    "source": "Sciences du Coran ('Ulum Al-Qur'an). À Médine, les musulmans formaient un État, d'où le besoin de règles."
+  },
+  {
+    "question": "Quel terme arabe désigne l'exégèse (l'explication détaillée et l'interprétation) des versets du Coran ?",
+    "choix": ["Le Hadith", "Le Tafsir", "Le Taqlid", "La Fatwa"],
+    "bonne_reponse": "Le Tafsir",
+    "source": "Terminologie islamique."
+  },
+  {
+    "question": "Selon le Prophète (ﷺ), quelle sourate du Coran intercédera le Jour du Jugement pour la personne qui avait l'habitude de la lire, jusqu'à ce qu'elle soit pardonnée ?",
+    "choix": ["Sourate Al-Baqarah", "Sourate Yasin", "Sourate Al-Mulk (La Royauté)", "Sourate Ar-Rahman"],
+    "bonne_reponse": "Sourate Al-Mulk (La Royauté)",
+    "source": "Hadith authentique : Sunan Abu Dawud, n° 1400."
   }
 
         ]
@@ -967,6 +1055,30 @@
     "choix": ["Al-Khansa", "Layla al-Akhyaliyya", "Rabi'a al-Adawiyya", "Sukayna bint Husayn"],
     "bonne_reponse": "Al-Khansa",
     "source": "Histoire de l'Islam d'Ad-Dhahabi (Siyar A'lam an-Nubala). Lorsqu'elle apprit leur mort, elle dit : 'Louange à Allah qui m'a honorée par leur martyre'."
+  },
+  {
+    "question": "Quelle phrase pleine de foi et de confiance absolue Hajar a-t-elle prononcée lorsque le prophète Ibrahim l'a laissée seule dans le désert avec son bébé ?",
+    "choix": ["Pourquoi nous abandonnes-tu ?", "Allah ne nous abandonnera pas", "Qui va nous nourrir ?", "Nous allons mourir ici"],
+    "bonne_reponse": "Allah ne nous abandonnera pas",
+    "source": "Sahih Al-Bukhari, n° 3364 (Hadith d'Ibn Abbas)."
+  },
+  {
+    "question": "Entre quelles collines Hajar a-t-elle couru désespérément 7 fois pour chercher de l'eau ou du secours pour son bébé Ismaïl ?",
+    "choix": ["Uhud et Badr", "Safa et Marwa", "Arafat et Muzdalifah", "Sinaï et Tur"],
+    "bonne_reponse": "Safa et Marwa",
+    "source": "Sahih Al-Bukhari, n° 3364. (C'est l'origine du rite du Sa'y pendant le Hajj et la Omra)."
+  },
+  {
+    "question": "Comment la source miraculeuse de Zamzam a-t-elle jailli du sol pour sauver Hajar et le bébé Ismaïl ?",
+    "choix": ["Hajar a creusé avec ses mains", "Une pluie torrentielle est tombée", "L'Ange Jibril (Gabriel) a frappé le sol avec son aile (ou son talon)", "Ibrahim a frappé le sol avec son bâton"],
+    "bonne_reponse": "L'Ange Jibril (Gabriel) a frappé le sol avec son aile (ou son talon)",
+    "source": "Sahih Al-Bukhari, n° 3364."
+  },
+  {
+    "question": "Quelle tribu arabe, attirée par les oiseaux volant au-dessus de l'eau de Zamzam, a demandé l'autorisation à Hajar de s'y installer, fondant ainsi la ville de La Mecque ?",
+    "choix": ["Quraysh", "Les Jurhum", "Les Khazraj", "Les Aws"],
+    "bonne_reponse": "Les Jurhum",
+    "source": "Sahih Al-Bukhari, n° 3364 (Hajar a accepté à condition qu'elle garde la propriété de l'eau)."
   }
 
 
@@ -1287,13 +1399,373 @@
     "choix": ["Quitter sa femme Sarah", "Détruire la Kaaba", "Sacrifier son fils (Ismaïl)", "Se jeter dans la mer"],
     "bonne_reponse": "Sacrifier son fils (Ismaïl)",
     "source": "Coran, Sourate As-Saffat (37), versets 102 à 107."
+  },
+  {
+    "question": "Quel est l'autre nom donné au prophète Ya'qub (Jacob) dans le Coran, qui a ensuite donné son nom à ses descendants (Les Enfants de...) ?",
+    "choix": ["Juda", "Lévi", "Israël", "Canaan"],
+    "bonne_reponse": "Israël",
+    "source": "Coran, Sourate Al Imran (3), verset 93."
+  },
+  {
+    "question": "Quel oiseau a voyagé et informé le prophète Sulayman (Salomon) de l'existence de la reine de Saba et de son peuple qui adoraient le soleil ?",
+    "choix": ["Un corbeau", "La huppe (Hudhud)", "Un aigle", "Une colombe"],
+    "bonne_reponse": "La huppe (Hudhud)",
+    "source": "Coran, Sourate An-Naml (27), versets 20 à 22."
+  },
+  {
+    "question": "Quel était le nom du père (ou oncle selon certains exégètes) du prophète Ibrahim, qui fabriquait et vendait des idoles ?",
+    "choix": ["Tarih", "Azar", "Nimrod", "Haman"],
+    "bonne_reponse": "Azar",
+    "source": "Coran, Sourate Al-An'am (6), verset 74."
+  },
+  {
+    "question": "Vers quelle immense cité antique le prophète Yunus (Jonas) a-t-il été envoyé pour prêcher, avant de fuir par désespoir ?",
+    "choix": ["Babylone", "Jéricho", "Ninive", "Sodome"],
+    "bonne_reponse": "Ninive",
+    "source": "Hadith (épisode de la rencontre avec le jeune Addas à Taïf) et Tafsir Ibn Kathir."
+  },
+  {
+    "question": "Comment Allah a-t-Il ordonné au prophète Ayyub (Job) de se guérir de sa longue et douloureuse maladie ?",
+    "choix": ["En buvant du miel", "En frappant la terre de son pied pour faire jaillir une source d'eau fraîche", "En jeûnant 40 jours", "En mangeant une plante spécifique"],
+    "bonne_reponse": "En frappant la terre de son pied pour faire jaillir une source d'eau fraîche",
+    "source": "Coran, Sourate Sad (38), verset 42."
+  },
+  {
+    "question": "Quel haut poste le roi d'Égypte a-t-il confié au prophète Yusuf (Joseph) après l'avoir innocenté et libéré de prison ?",
+    "choix": ["Chef des armées", "Intendant des trésors (greniers) du pays", "Grand juge", "Architecte en chef"],
+    "bonne_reponse": "Intendant des trésors (greniers) du pays",
+    "source": "Coran, Sourate Yusuf (12), verset 55."
+  },
+  {
+    "question": "Combien d'années le prophète Musa (Moïse) s'est-il engagé à travailler pour le vieillard de Madyan en échange de la main de sa fille ?",
+    "choix": ["1 ou 2 ans", "3 ou 4 ans", "8 ou 10 ans", "40 ans"],
+    "bonne_reponse": "8 ou 10 ans",
+    "source": "Coran, Sourate Al-Qasas (28), verset 27."
+  },
+  {
+    "question": "Selon un hadith authentique, quelle était la taille immense du prophète Adam (et donc des premiers hommes) lorsqu'Allah l'a créé ?",
+    "choix": ["10 coudées (environ 5 mètres)", "30 coudées (environ 15 mètres)", "60 coudées (environ 30 mètres)", "100 coudées (environ 50 mètres)"],
+    "bonne_reponse": "60 coudées (environ 30 mètres)",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 3326."
+  },
+  {
+    "question": "Quel surnom élogieux est traditionnellement donné au prophète Shu'ayb en raison de son éloquence face à son peuple de Madyan ?",
+    "choix": ["L'Ami d'Allah", "L'Orateur des prophètes (Khatib al-Anbiya)", "Le Sage", "L'Épée de la vérité"],
+    "bonne_reponse": "L'Orateur des prophètes (Khatib al-Anbiya)",
+    "source": "Histoire des Prophètes (Ibn Kathir) et traditions exégétiques."
+  },
+  {
+    "question": "Quel était le lien de parenté direct entre le prophète Lut (Loth) et le prophète Ibrahim (Abraham) ?",
+    "choix": ["Lut était le fils d'Ibrahim", "Lut était le neveu d'Ibrahim", "Lut était le frère d'Ibrahim", "Ils n'avaient aucun lien de parenté"],
+    "bonne_reponse": "Lut était le neveu d'Ibrahim",
+    "source": "Histoire des Prophètes (Ibn Kathir) et consensus généalogique islamique."
+  },
+  {
+    "question": "Quel titre spirituel est spécifiquement donné à Isa (Jésus) dans le Coran, signifiant qu'il a été créé par un ordre direct ('Sois !') de son Créateur ?",
+    "choix": ["L'Esprit de Vérité", "La Lumière d'Allah", "La Parole d'Allah (Kalimatullah)", "Le Flambeau"],
+    "bonne_reponse": "La Parole d'Allah (Kalimatullah)",
+    "source": "Coran, Sourate An-Nisa (4), verset 171."
+  },
+  {
+    "question": "Lequel de ces prophètes est l'ancêtre direct des tribus arabes du Nord (Adnan) et donc du Prophète Muhammad (ﷺ) ?",
+    "choix": ["Ishaq (Isaac)", "Ya'qub (Jacob)", "Ismaïl", "Yusuf (Joseph)"],
+    "bonne_reponse": "Ismaïl",
+    "source": "Consensus généalogique et Sira prophétique."
+  },
+  {
+    "question": "Selon les récits de l'Histoire des Prophètes, quelle profession ou artisanat est attribuée au prophète Idris, faisant de lui le premier à la pratiquer ?",
+    "choix": ["Forgeron", "Couturier / Tailleur", "Menuisier", "Agriculteur"],
+    "bonne_reponse": "Couturier / Tailleur",
+    "source": "Tafsir d'Ibn Kathir (Il était le premier à coudre des vêtements avec une aiguille, alors qu'avant on portait des peaux de bêtes)."
+  },
+  {
+    "question": "Quelle petite créature a averti ses semblables de rentrer vite dans leurs demeures pour ne pas être écrasées par l'armée du prophète Sulayman ?",
+    "choix": ["Une abeille", "Une fourmi", "Une sauterelle", "Une araignée"],
+    "bonne_reponse": "Une fourmi",
+    "source": "Coran, Sourate An-Naml (27), verset 18."
+  },
+  {
+    "question": "Sur quel mont l'arche du prophète Nuh (Noé) s'est-elle immobilisée après la fin du grand Déluge et le retrait des eaux ?",
+    "choix": ["Le mont Sinaï", "Le mont Ararat", "Le mont Joudi", "Le mont Uhud"],
+    "bonne_reponse": "Le mont Joudi",
+    "source": "Coran, Sourate Hud (11), verset 44."
+  },
+  {
+    "question": "Quelle invocation (Dua) très célèbre le prophète Yunus (Jonas) a-t-il prononcée dans les ténèbres du ventre du poisson pour être sauvé ?",
+    "choix": ["Hasbunallah wa ni'mal wakil", "La ilaha illa Anta, Subhanaka, inni kuntu minaz-zalimin", "Rabbi inni lima anzalta ilayya min khayrin faqir", "Inna lillahi wa inna ilayhi raji'un"],
+    "bonne_reponse": "La ilaha illa Anta, Subhanaka, inni kuntu minaz-zalimin",
+    "source": "Coran, Sourate Al-Anbiya (21), verset 87 ('Pas de divinité à part Toi ! Pureté à Toi ! J'ai été vraiment du nombre des injustes.')."
+  },
+  {
+    "question": "Qu'est-ce que le prophète Yusuf (Joseph) a secrètement glissé dans les bagages de son petit frère (Binyamin) pour avoir un prétexte et le garder auprès de lui en Égypte ?",
+    "choix": ["Une bourse d'or", "La coupe du roi", "Un manuscrit sacré", "Le manteau de leur père"],
+    "bonne_reponse": "La coupe du roi",
+    "source": "Coran, Sourate Yusuf (12), verset 70."
+  },
+  {
+    "question": "Comment les djinns, qui travaillaient sans relâche pour le prophète Sulayman (Salomon), ont-ils fini par découvrir qu'il était mort ?",
+    "choix": ["L'Ange de la mort le leur a annoncé", "La bête de la terre (un termite) a rongé son bâton, le faisant tomber", "Son trône s'est brisé", "Le vent a cessé de souffler"],
+    "bonne_reponse": "La bête de la terre (un termite) a rongé son bâton, le faisant tomber",
+    "source": "Coran, Sourate Saba (34), verset 14."
+  },
+  {
+    "question": "Pour prouver au prophète Ibrahim (Abraham) comment Il ressuscite les morts, Allah lui a demandé de découper et de disperser sur les montagnes combien d'oiseaux ?",
+    "choix": ["2 oiseaux", "3 oiseaux", "4 oiseaux", "7 oiseaux"],
+    "bonne_reponse": "4 oiseaux",
+    "source": "Coran, Sourate Al-Baqarah (2), verset 260."
+  },
+  {
+    "question": "Quel tyran orgueilleux a débattu avec le prophète Ibrahim (Abraham) en prétendant lui aussi donner la vie et la mort, avant d'être confondu par l'argument du soleil ?",
+    "choix": ["Pharaon", "Goliath (Jalut)", "Nimrod (Namrud)", "Haman"],
+    "bonne_reponse": "Nimrod (Namrud)",
+    "source": "Coran, Sourate Al-Baqarah (2), verset 258 et Tafsir d'Ibn Kathir."
+  },
+  {
+    "question": "Qu'a inspiré Allah à la mère du prophète Musa (Moïse) lorsqu'elle a craint pour la vie de son nouveau-né face aux soldats de Pharaon ?",
+    "choix": ["De fuir vers la Syrie", "De le cacher dans une grotte", "De l'allaiter puis de le jeter (dans un coffret) dans le fleuve", "De le confier à la sœur de Pharaon"],
+    "bonne_reponse": "De l'allaiter puis de le jeter (dans un coffret) dans le fleuve",
+    "source": "Coran, Sourate Al-Qasas (28), verset 7."
+  },
+  {
+    "question": "Qui était Qarun (Coré) dans l'histoire du prophète Musa (Moïse) ?",
+    "choix": ["Le grand magicien de Pharaon", "Un homme du peuple de Musa devenu immensément riche et arrogant, englouti par la terre", "Le ministre architecte de Pharaon", "Le chef de l'armée égyptienne"],
+    "bonne_reponse": "Un homme du peuple de Musa devenu immensément riche et arrogant, englouti par la terre",
+    "source": "Coran, Sourate Al-Qasas (28), versets 76 à 81."
+  },
+  {
+    "question": "Quelle épreuve le prophète Salih a-t-il imposée à son peuple (Thamûd) concernant la chamelle miraculeuse ?",
+    "choix": ["Lui construire une immense étable", "Ne jamais croiser son regard", "Partager l'eau : un jour pour eux, un jour exclusif pour la chamelle", "La nourrir uniquement de dattes"],
+    "bonne_reponse": "Partager l'eau : un jour pour eux, un jour exclusif pour la chamelle",
+    "source": "Coran, Sourate Ash-Shu'ara (26), verset 155."
+  },
+  {
+    "question": "Comment le prophète Nuh (Noé) et les croyants ont-ils été raillés par leur peuple lors de la construction de l'arche ?",
+    "choix": ["Ils la construisaient avec de l'argile", "Ils la construisaient en plein désert, loin de toute mer", "Ils la construisaient à l'envers", "L'arche était trop petite"],
+    "bonne_reponse": "Ils la construisaient en plein désert, loin de toute mer",
+    "source": "Tafsir Ibn Kathir (Commentaire de la Sourate Hud, verset 38)."
+  },
+  {
+    "question": "Selon un célèbre hadith, quelle était la pratique de jeûne préférée d'Allah, qui était celle du prophète Dawud (David) ?",
+    "choix": ["Jeûner tous les lundis et jeudis", "Jeûner les trois jours blancs du mois", "Jeûner un jour sur deux", "Jeûner pendant trois mois d'affilée"],
+    "bonne_reponse": "Jeûner un jour sur deux",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 3420."
+  },
+  {
+    "question": "Afin de respecter son serment de punir sa femme (après sa guérison) sans pour autant lui faire de mal, que fut commandé au prophète Ayyub (Job) ?",
+    "choix": ["De la frapper avec un faisceau de brindilles (ou de l'herbe)", "De lui verser de l'eau sur la tête", "De ne pas lui parler pendant trois jours", "De lui faire payer une aumône"],
+    "bonne_reponse": "De la frapper avec un faisceau de brindilles (ou de l'herbe)",
+    "source": "Coran, Sourate Sad (38), verset 44."
+  },
+  {
+    "question": "D'après un hadith rapporté par Abu Dharr, sur l'ensemble des 124 000 Prophètes (Anbiya), combien furent des Messagers (Rusul) chargés d'un livre et d'une législation ?",
+    "choix": ["25", "313", "1 000", "5 000"],
+    "bonne_reponse": "313",
+    "source": "Hadith rapporté par Ahmad et Ibn Hibban, jugé authentique par plusieurs savants (le nombre exact est parfois 315)."
+  },
+  {
+    "question": "Parmi les idoles vénérées par le peuple du prophète Nuh (Noé) et citées dans le Coran, on trouve :",
+    "choix": ["Al-Lat, Al-Uzza, Manat", "Hubal et Isaf", "Ba'al", "Wadd, Suwa', Yaghuth, Ya'uq et Nasr"],
+    "bonne_reponse": "Wadd, Suwa', Yaghuth, Ya'uq et Nasr",
+    "source": "Coran, Sourate Nuh (71), verset 23."
+  },
+  {
+    "question": "Selon un hadith, quelle action majeure fera le prophète Isa (Jésus) lors de son retour sur terre, après avoir vaincu le Dajjal ?",
+    "choix": ["Il détruira la Kaaba", "Il brisera la croix et tuera le porc", "Il lira l'Évangile à toute l'humanité", "Il fera disparaître toutes les montagnes"],
+    "bonne_reponse": "Il brisera la croix et tuera le porc",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 2222."
+  },
+  {
+    "question": "Quel lien de parenté unissait le prophète Yahya (Jean-Baptiste) et le prophète Isa (Jésus) ?",
+    "choix": ["Ils étaient frères", "Ils étaient oncle et neveu", "Ils étaient cousins", "Ils n'avaient aucun lien de parenté"],
+    "bonne_reponse": "Ils étaient cousins",
+    "source": "Histoire prophétique et hadith du Voyage Nocturne (Sahih Muslim) où le Prophète (ﷺ) décrit 'les deux cousins maternels Yahya et Isa'."
   }
         ]
     },
     "La Prière": {
         icon: "⭐",
         questions: [
-            { "question": "Quel est le 3ème pilier de l'Islam ?", "choix": ["La Prière", "La Zakat", "Le Jeûne", "Le Pèlerinage"], "bonne_reponse": "La Zakat", "source": "Hadith de Jibril." }
+            { "question": "Quel est le 3ème pilier de l'Islam ?", "choix": ["La Prière", "La Zakat", "Le Jeûne", "Le Pèlerinage"], "bonne_reponse": "La Zakat", "source": "Hadith de Jibril." },
+            {
+    "question": "Combien de prières obligatoires (Fard) un musulman doit-il accomplir chaque jour et chaque nuit ?",
+    "choix": ["3", "5", "7", "50"],
+    "bonne_reponse": "5",
+    "source": "Consensus islamique, établi lors du Voyage Nocturne (Al-Isra wal-Mi'raj)."
+  },
+  {
+    "question": "Comment s'appelle la direction vers laquelle tous les musulmans doivent se tourner pour accomplir la prière ?",
+    "choix": ["Le Mihrab", "Le Minbar", "La Qibla", "Le Maqam"],
+    "bonne_reponse": "La Qibla",
+    "source": "Coran, Sourate Al-Baqarah (2), verset 144 (Direction de la Kaaba à La Mecque)."
+  },
+  {
+    "question": "Quelle prière obligatoire est composée de 3 unités (Rak'at) ?",
+    "choix": ["Le Fajr (l'aube)", "Le Dhuhr (le midi)", "L'Asr (l'après-midi)", "Le Maghrib (le coucher du soleil)"],
+    "bonne_reponse": "Le Maghrib (le coucher du soleil)",
+    "source": "Consensus de la Sunna prophétique."
+  },
+  {
+    "question": "Quelle est l'action préalable absolument obligatoire pour que la prière soit acceptée ?",
+    "choix": ["Mettre du parfum", "Accomplir les ablutions (Al-Wudu / purification)", "Manger des dattes", "Prier à la mosquée"],
+    "bonne_reponse": "Accomplir les ablutions (Al-Wudu / purification)",
+    "source": "Hadith authentique : Sahih Muslim, n° 225 ('La prière n'est pas acceptée sans purification')."
+  },
+  {
+    "question": "Dans quelle position de la prière le serviteur est-il le plus proche de son Seigneur selon le Prophète (ﷺ) ?",
+    "choix": ["Debout (Qiyam)", "Incliné (Ruku')", "Prosterné (Sujud)", "Assis (Tashahhud)"],
+    "bonne_reponse": "Prosterné (Sujud)",
+    "source": "Hadith authentique : Sahih Muslim, n° 482."
+  },
+  {
+    "question": "Comment s'appelle l'appel à la prière prononcé à voix haute pour annoncer l'heure aux fidèles ?",
+    "choix": ["L'Iqama", "L'Adhan", "La Khutba", "Le Dhikr"],
+    "bonne_reponse": "L'Adhan",
+    "source": "Terminologie islamique."
+  },
+  {
+    "question": "Comment s'appelle la prière spécifique en groupe qui remplace la prière du Dhuhr tous les vendredis ?",
+    "choix": ["Salat Al-Eid", "Salat Al-Jumu'ah", "Salat Al-Witr", "Salat Al-Kusuf"],
+    "bonne_reponse": "Salat Al-Jumu'ah",
+    "source": "Coran, Sourate Al-Jumu'ah (62), verset 9."
+  },
+  {
+    "question": "Comment s'appelle la prière de 'consultation', que l'on effectue pour demander à Allah de nous guider vers le meilleur choix lors d'une décision importante ?",
+    "choix": ["Salat Al-Istisqa", "Salat Al-Istikhara", "Salat Al-Haja", "Salat Ad-Duha"],
+    "bonne_reponse": "Salat Al-Istikhara",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 1162."
+  },
+  {
+    "question": "Quelle sourate doit absolument être récitée dans chaque unité (Rak'ah) de la prière pour que celle-ci soit valide ?",
+    "choix": ["Al-Ikhlas", "Al-Fatiha", "Al-Asr", "Al-Kawthar"],
+    "bonne_reponse": "Al-Fatiha",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 756 ('Point de prière pour celui qui ne récite pas l'Ouverture du Livre')."
+  },
+  {
+    "question": "Comment s'appelle la prière surérogatoire très recommandée effectuée tard dans la nuit, après avoir dormi ?",
+    "choix": ["Le Tahajjud (Qiyam al-Layl)", "Le Witr", "Le Duha", "Le Tarawih"],
+    "bonne_reponse": "Le Tahajjud (Qiyam al-Layl)",
+    "source": "Coran, Sourate Al-Isra (17), verset 79."
+  },
+  {
+    "question": "Par quelles paroles le musulman clôture-t-il obligatoirement sa prière en tournant la tête à droite puis à gauche ?",
+    "choix": ["Amin", "Allahu Akbar", "Assalamu 'alaykum wa rahmatullah", "Alhamdulillah"],
+    "bonne_reponse": "Assalamu 'alaykum wa rahmatullah",
+    "source": "Hadith authentique : Sunan At-Tirmidhi, n° 3 (Le Taslim)."
+  },
+  {
+    "question": "Quelle prière obligatoire est surnommée 'La prière médiane' (Salat Al-Wusta) dans le Coran, sur laquelle il faut particulièrement veiller ?",
+    "choix": ["Le Fajr", "Le Dhuhr", "L'Asr", "L'Isha"],
+    "bonne_reponse": "L'Asr",
+    "source": "Avis de la grande majorité des Compagnons (dont Ali et Ibn Mas'ud) et Hadith de la bataille du Fossé (Sahih Al-Bukhari, n° 2931)."
+  },
+  {
+    "question": "Que doit-on dire lorsque l'on se relève de l'inclinaison (Ruku') et que l'on se tient droit ?",
+    "choix": ["Sami'a Allahu liman hamidah", "Subhana Rabbiyal A'la", "Astaghfirullah", "Allahu Akbar"],
+    "bonne_reponse": "Sami'a Allahu liman hamidah",
+    "source": "Sunna de la prière enseignée par le Prophète (Sahih Al-Bukhari, n° 789)."
+  },
+  {
+    "question": "Si on effectue une prière de 4 unités (comme le Dhuhr), à quel moment doit-on s'asseoir pour réciter le premier Tachahhoud ?",
+    "choix": ["Après la première unité", "Après la deuxième unité", "Après la troisième unité", "Uniquement à la toute fin"],
+    "bonne_reponse": "Après la deuxième unité",
+    "source": "Pratique unanime de la prière enseignée par le Prophète (ﷺ)."
+  },
+  {
+    "question": "Quelle prière spécifique est accomplie lors d'une éclipse solaire ou lunaire ?",
+    "choix": ["Salat Al-Istisqa", "Salat Al-Kusuf / Khusuf", "Salat Al-Janaza", "Salat Al-Witr"],
+    "bonne_reponse": "Salat Al-Kusuf / Khusuf",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 1044."
+  },
+  {
+    "question": "Que signifie exactement l'invocation 'Subhana Rabbiyal 'Adhim' que l'on répète lors de l'inclinaison (Ruku') ?",
+    "choix": ["Gloire à mon Seigneur le Très-Haut", "Gloire à mon Seigneur l'Immense", "Dieu écoute celui qui Le loue", "Pardon à mon Seigneur"],
+    "bonne_reponse": "Gloire à mon Seigneur l'Immense",
+    "source": "Traduction de l'arabe (Adhim = Immense/Grand, utilisé pour l'inclinaison)."
+  },
+  {
+    "question": "Que veut dire la formule 'Subhana Rabbiyal A'la' que l'on prononce le front au sol pendant la prosternation (Sujud) ?",
+    "choix": ["Gloire à mon Seigneur l'Immense", "Seigneur, pardonne-moi", "Gloire à mon Seigneur le Très-Haut", "Louange à mon Seigneur"],
+    "bonne_reponse": "Gloire à mon Seigneur le Très-Haut",
+    "source": "Traduction de l'arabe (A'la = Le Plus Haut, symbolique quand on est dans la position la plus basse)."
+  },
+  {
+    "question": "Lors du premier Tachahhoud (la position assise), on prononce 'At-Tahiyyatu lillah...'. Que signifie le mot 'Tachahhoud' ?",
+    "choix": ["La Salutation", "L'Attestation de foi", "La Bénédiction", "La Prière sur le Prophète"],
+    "bonne_reponse": "L'Attestation de foi",
+    "source": "Du mot 'Shahada' (témoignage), car cette invocation se termine en attestant qu'il n'y a de dieu qu'Allah et que Muhammad est Son Messager."
+  },
+  {
+    "question": "Lors de la sourate Al-Fatiha, que demande-t-on exactement à Allah en prononçant le verset : 'Ihdinas-siratal mustaqim' ?",
+    "choix": ["Pardonne-nous nos péchés", "Protège-nous de l'Enfer", "Guide-nous dans le droit chemin", "Accorde-nous Ta miséricorde"],
+    "bonne_reponse": "Guide-nous dans le droit chemin",
+    "source": "Coran, Sourate Al-Fatiha (1), verset 6."
+  },
+  {
+    "question": "Quel mot arabe, essentiel à la prière, désigne la concentration profonde, l'humilité et la crainte révérencielle du cœur devant Allah ?",
+    "choix": ["Al-Ihsan", "Al-Khushu'", "Al-Wudu", "At-Tawakkul"],
+    "bonne_reponse": "Al-Khushu'",
+    "source": "Coran, Sourate Al-Mu'minun (23), verset 2 ('Bienheureux sont certes les croyants, ceux qui sont humbles (Khashi'un) dans leur prière')."
+  },
+  {
+    "question": "Comment s'appelle le démon (Shaytan) spécifiquement chargé de distraire le musulman pendant sa prière pour lui faire oublier combien de Rak'at il a prié ?",
+    "choix": ["Iblis", "Qarin", "Khinzab", "Dajjal"],
+    "bonne_reponse": "Khinzab",
+    "source": "Hadith authentique : Sahih Muslim, n° 2203 (Le Prophète a conseillé de chercher refuge auprès d'Allah et de crachoter 3 fois à gauche pour le repousser)."
+  },
+  {
+    "question": "En jurisprudence, que doit faire un prieur s'il oublie un acte non-pilier ou s'il a un doute sur le nombre de Rak'at effectuées ?",
+    "choix": ["Recommencer toute sa prière", "Faire deux prosternations de réparation (Sujud As-Sahw)", "Donner une aumône", "Demander pardon après le Salam"],
+    "bonne_reponse": "Faire deux prosternations de réparation (Sujud As-Sahw)",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 1224."
+  },
+  {
+    "question": "Selon le Prophète (ﷺ), la prière obligatoire effectuée en groupe (à la mosquée) est supérieure à la prière accomplie seul de combien de degrés ?",
+    "choix": ["10 degrés", "27 degrés", "50 degrés", "70 degrés"],
+    "bonne_reponse": "27 degrés",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 645 (Une autre version authentique mentionne 25 degrés)."
+  },
+  {
+    "question": "À quel moment de la journée est-il strictement interdit (Makruh Tahriman) de commencer une nouvelle prière surérogatoire ?",
+    "choix": ["Juste avant la prière du Dhuhr", "Pendant que le soleil se lève, et pendant qu'il se couche", "Le vendredi matin", "Après minuit"],
+    "bonne_reponse": "Pendant que le soleil se lève, et pendant qu'il se couche",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 586 (Pour ne pas imiter ceux qui se prosternaient devant le soleil)."
+  },
+  {
+    "question": "Laquelle de ces conditions N'EST PAS une obligation préalable pour que la prière soit valide ?",
+    "choix": ["Être en état de pureté (Ablutions)", "Être tourné vers la Qibla", "Couvrir sa 'Awra (parties intimes à cacher)", "Prier à la mosquée"],
+    "bonne_reponse": "Prier à la mosquée",
+    "source": "Consensus des savants de la jurisprudence. La prière à la mosquée est une recommandation forte (ou obligation selon les Hanbalites), mais sa validité n'en dépend pas."
+  },
+  {
+    "question": "Comment s'appelle la prière surérogatoire de la matinée (effectuée entre le lever du soleil et le Dhuhr), qui équivaut à une aumône pour chaque articulation du corps ?",
+    "choix": ["Salat Al-Ishraq", "Salat Ad-Duha", "Salat Al-Witr", "Salat Al-Awwabin"],
+    "bonne_reponse": "Salat Ad-Duha",
+    "source": "Hadith authentique : Sahih Muslim, n° 720."
+  },
+  {
+    "question": "Quelle invocation (Du'a) le Prophète (ﷺ) récitait-il très souvent juste avant de dire le Salam final pour clôturer la prière ?",
+    "choix": ["Ayat Al-Kursi", "Une demande de protection contre 4 choses (L'Enfer, le supplice de la tombe, les épreuves de la vie/mort, et le Dajjal)", "La prière sur Ibrahim", "Une demande de pardon pour ses parents"],
+    "bonne_reponse": "Une demande de protection contre 4 choses (L'Enfer, le supplice de la tombe, les épreuves de la vie/mort, et le Dajjal)",
+    "source": "Hadith authentique : Sahih Muslim, n° 588."
+  },
+  {
+    "question": "Comment s'appelle la prière de nuit, clôturant les prières de la journée, et qui a la particularité d'avoir un nombre impair de Rak'at (généralement 1 ou 3) ?",
+    "choix": ["Le Tahajjud", "Le Tarawih", "Le Witr", "Le Qiyam"],
+    "bonne_reponse": "Le Witr",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 990 ('Faites que votre dernière prière de la nuit soit impaire')."
+  },
+  {
+    "question": "Quelle est la particularité physique majeure de la prière mortuaire (Salat Al-Janaza) par rapport à toutes les autres prières ?",
+    "choix": ["On la fait assis", "Elle ne comporte ni inclinaison (Ruku') ni prosternation (Sujud)", "On la prie en silence total", "On ne récite pas Al-Fatiha"],
+    "bonne_reponse": "Elle ne comporte ni inclinaison (Ruku') ni prosternation (Sujud)",
+    "source": "Consensus (Ijma) sur la forme de la prière funéraire : 4 Takbirs (Allahu Akbar) uniquement debout."
+  },
+  {
+    "question": "Selon un célèbre hadith, avec quoi les péchés du prieur tombent-ils lorsqu'il s'incline et se prosterne pendant la prière ?",
+    "choix": ["Avec ses larmes", "Avec la sueur de son front", "Ils sont placés sur sa tête et ses épaules, et tombent à chaque mouvement", "Ils sont brûlés par la lumière de la prière"],
+    "bonne_reponse": "Ils sont placés sur sa tête et ses épaules, et tombent à chaque mouvement",
+    "source": "Hadith authentique : Rapporté par Ibn Hibban et Al-Bayhaqi, authentifié par Al-Albani (Silsila Sahiha n° 1398)."
+  }
         ]
     },
     "Ramadan": {
@@ -1487,7 +1959,97 @@
     "Comportement": {
         icon: "💎",
         questions: [
-            { "question": "Le Prophète (ﷺ) a dit : 'Le meilleur d'entre vous est celui qui est le meilleur avec...'", "choix": ["Ses amis", "Sa famille/ses femmes", "Ses voisins", "Ses collègues"], "bonne_reponse": "Sa famille/ses femmes", "source": "Hadith (Tirmidhi)." }
+            { "question": "Le Prophète (ﷺ) a dit : 'Le meilleur d'entre vous est celui qui est le meilleur avec...'", "choix": ["Ses amis", "Sa famille/ses femmes", "Ses voisins", "Ses collègues"], "bonne_reponse": "Sa famille/ses femmes", "source": "Hadith (Tirmidhi)." },
+            {
+    "question": "Quel est l'élément qui pèsera le plus lourd sur la balance du croyant le Jour du Jugement selon le Prophète (ﷺ) ?",
+    "choix": ["La prière de nuit", "Le bon comportement", "L'aumône", "Le jeûne"],
+    "bonne_reponse": "Le bon comportement",
+    "source": "Hadith authentique : Sunan At-Tirmidhi, n° 2002."
+  },
+  {
+    "question": "Selon le Coran (Sourate Al-Hujurat), à quoi est comparé le fait de médire (faire de la médisance / Ghibah) sur son frère ou sa sœur en Islam ?",
+    "choix": ["À voler l'argent d'un orphelin", "À manger la chair morte de son frère", "À fuir le champ de bataille", "À détruire une mosquée"],
+    "bonne_reponse": "À manger la chair morte de son frère",
+    "source": "Coran, Sourate Al-Hujurat (49), verset 12."
+  },
+  {
+    "question": "Selon un célèbre hadith, quel conseil le Prophète (ﷺ) a-t-il répété trois fois à un homme qui lui demandait une recommandation pour ne pas pécher ?",
+    "choix": ["Ne te mets pas en colère", "Prie la nuit", "Donne en aumône", "Jeûne souvent"],
+    "bonne_reponse": "Ne te mets pas en colère",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 6116."
+  },
+  {
+    "question": "Le Prophète (ﷺ) a redéfini la véritable force. Selon lui, qui est l'homme fort ?",
+    "choix": ["Celui qui terrasse ses adversaires", "Celui qui ne pleure jamais", "Celui qui se maîtrise sous l'emprise de la colère", "Celui qui soulève des montagnes"],
+    "bonne_reponse": "Celui qui se maîtrise sous l'emprise de la colère",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 6114."
+  },
+  {
+    "question": "Quel acte simple du quotidien est considéré comme une aumône (Sadaqah) en Islam selon un hadith d'Abu Dharr ?",
+    "choix": ["Dormir pour se reposer", "Sourire à son frère", "Manger de la viande", "Acheter un vêtement neuf"],
+    "bonne_reponse": "Sourire à son frère",
+    "source": "Hadith authentique : Sunan At-Tirmidhi, n° 1956."
+  },
+  {
+    "question": "Complétez cette célèbre règle d'or prophétique : 'Celui qui croit en Allah et au Jour Dernier, qu'il...'",
+    "choix": ["dise du bien ou qu'il se taise", "donne tout son argent", "ne dorme plus la nuit", "voyage chaque année à La Mecque"],
+    "bonne_reponse": "dise du bien ou qu'il se taise",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 6018."
+  },
+  {
+    "question": "Parmi les 70 et quelques branches de la foi (Iman), quelle est la plus basse (la plus simple à accomplir) selon le Prophète (ﷺ) ?",
+    "choix": ["Dire La ilaha illallah", "Avoir de la pudeur", "Enlever une chose nuisible du chemin", "Rendre le salut"],
+    "bonne_reponse": "Enlever une chose nuisible du chemin",
+    "source": "Hadith authentique : Sahih Muslim, n° 35."
+  },
+  {
+    "question": "Comment le Prophète (ﷺ) réagissait-il lorsqu'on lui servait un repas qu'il n'aimait pas ?",
+    "choix": ["Il le donnait aux pauvres immédiatement", "Il demandait qu'on lui prépare autre chose", "Il ne critiquait jamais la nourriture : s'il aimait il mangeait, sinon il délaissait", "Il se forçait à tout finir pour ne pas gaspiller"],
+    "bonne_reponse": "Il ne critiquait jamais la nourriture : s'il aimait il mangeait, sinon il délaissait",
+    "source": "Hadith authentique d'Abu Hurayra : Sahih Al-Bukhari, n° 5409."
+  },
+  {
+    "question": "L'Ange Jibril (Gabriel) n'a cessé de recommander au Prophète (ﷺ) d'être bon envers une certaine personne, au point qu'il a cru qu'il allait lui donner une part d'héritage. De qui s'agit-il ?",
+    "choix": ["La mère", "L'épouse", "Le voisin", "L'orphelin"],
+    "bonne_reponse": "Le voisin",
+    "source": "Hadith authentique : Sahih Al-Bukhari, n° 6014."
+  },
+  {
+    "question": "Selon un hadith, quelles sont les 3 caractéristiques (signes) reconnaissables d'un hypocrite (Munafiq) dans son comportement social ?",
+    "choix": ["Il mange beaucoup, dort beaucoup, rit beaucoup", "Quand il parle il ment, quand il promet il ne tient pas, quand on lui confie un dépôt il trahit", "Il prie vite, donne peu d'aumône, ne sourit pas", "Il porte de beaux habits, parle fort, marche fièrement"],
+    "bonne_reponse": "Quand il parle il ment, quand il promet il ne tient pas, quand on lui confie un dépôt il trahit",
+    "source": "Hadith authentique d'Abu Hurayra : Sahih Al-Bukhari, n° 33."
+  },
+  {
+    "question": "Que promet le Prophète (ﷺ) à celui qui lui garantit de préserver ce qui se trouve entre ses deux mâchoires (sa langue) et entre ses deux jambes (sa chasteté) ?",
+    "choix": ["La richesse", "Une longue vie", "Le Paradis", "La gloire"],
+    "bonne_reponse": "Le Paradis",
+    "source": "Hadith authentique de Sahl ibn Sa'd : Sahih Al-Bukhari, n° 6474."
+  },
+  {
+    "question": "Quel est le terrible châtiment promis par le Prophète (ﷺ) à la personne qui rompt définitivement les liens avec un membre de sa famille (Qati' ar-Rahm) ?",
+    "choix": ["Il devra payer une amende", "Ses prières ne valent que la moitié", "Il n'entrera pas au Paradis", "Il doit jeûner 2 mois"],
+    "bonne_reponse": "Il n'entrera pas au Paradis",
+    "source": "Hadith authentique de Jubayr ibn Mut'im : Sahih Al-Bukhari, n° 5984."
+  },
+  {
+    "question": "Une femme priait beaucoup la nuit et jeûnait le jour, mais elle causait du tort à ses voisins avec sa langue. Qu'a dit le Prophète (ﷺ) à son sujet ?",
+    "choix": ["Elle est en Enfer", "Ses prières la sauveront", "Elle doit demander pardon à l'Imam", "Ses voisins seront récompensés"],
+    "bonne_reponse": "Elle est en Enfer",
+    "source": "Hadith authentique : Musnad Ahmad, n° 9675, authentifié par Al-Albani."
+  },
+  {
+    "question": "Quelle est la récompense d'un musulman qui plante un arbre ou sème une graine dont un oiseau, un humain ou une bête vient à manger ?",
+    "choix": ["Il gagne le titre de jardinier du Paradis", "C'est compté pour lui comme une aumône (Sadaqah)", "Il efface un péché mineur", "Ses récoltes seront doublées"],
+    "bonne_reponse": "C'est compté pour lui comme une aumône (Sadaqah)",
+    "source": "Hadith authentique d'Anas ibn Malik : Sahih Al-Bukhari, n° 2320."
+  },
+  {
+    "question": "Le Prophète (ﷺ) a dit : 'Rien ne m'est plus cher, et rien ne sera plus proche de moi le Jour de la Résurrection que ceux d'entre vous qui...' ?",
+    "choix": ["Lisent le plus le Coran", "Ont le meilleur comportement (Akhlaq)", "Jeûnent tous les lundis", "Ont fait le pèlerinage chaque année"],
+    "bonne_reponse": "Ont le meilleur comportement (Akhlaq)",
+    "source": "Hadith authentique : Sunan At-Tirmidhi, n° 2018."
+  }
         ]
     }
 };
